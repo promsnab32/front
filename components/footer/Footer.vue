@@ -75,21 +75,19 @@
   &__logo {
     margin-bottom: 25px;
   }
+  &__links {
+    display: flex;
+    flex-direction: column;
+  }
   &__link {
-    display: inline-block;
-    width: auto;
-    text-decoration: none; // Если не нужно подчеркивание
+    width: max-content;
+    text-decoration: none;
     color: #222;
     font-family: 'Manrope';
     font-size: 28px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-  }
-  &__links {
-    display: flex;
-    flex-direction: column;
-    max-width: auto;
   }
   &__content {
     display: flex;
