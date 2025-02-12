@@ -46,7 +46,6 @@ const items = navList
   }
   &__nav {
     padding: 25px 15px;
-    border-bottom: 1px solid #8f8f8f;
   }
   &__nav-link {
     color: #fff;
