@@ -5,5 +5,5 @@ export const navList = [
   { type: 'dash' },
   { type: 'link', link: '/', title: 'о компаниии' },
   { type: 'dash' },
-  { type: 'link', link: '/', title: 'контакты' }
+  { type: 'link', link: '/contacts', title: 'контакты' }
 ];
