@@ -5,7 +5,6 @@
       <div class="news__slider">
         <CommonSwiper
           :slidesperview="3"
-          :pagination="true"
           @instance="setSwiperInstance"
           :slide-card="card"
           custom-button-next="news__custom-button-next"
@@ -100,23 +99,5 @@ const handleClickNext = () => {
       opacity: 0.5;
     }
   }
-}
-.swiper-pagination-bullet {
-  background: #55545b;
-  opacity: 1;
-  width: 10px;
-  height: 10px;
-}
-.swiper-pagination-bullet-active {
-  background: #fff;
-}
-.swiper-pagination {
-  text-align: right;
-}
-.swiper-pagination-bullets.swiper-pagination-horizontal {
-  width: 300px;
-  right: 0;
-  left: auto;
-  bottom: 0;
 }
 </style>
