@@ -30,7 +30,7 @@
       <div class="hero__content-2">
         <ul class="hero__list">
           <li
-            v-for="(item, index) in heroList"
+            v-for="(item, index) in heroItems"
             :key="index"
             class="hero__list-item"
           >
@@ -46,7 +46,27 @@
 
 <script lang="ts" setup>
 const items = navList
-const heroList = heroItems
+
+const heroItems = [
+  {
+    title: 'Дизельные двигатели и запчасти к ним',
+  },
+  {
+    title: 'Электрооборудование, генераторы и другое',
+  },
+  {
+    title: 'Топливные и тормозные системы',
+  },
+  {
+    title: ' Запчасти для гидропередачи и фильтры',
+  },
+  {
+    title: 'Прокладки, манжеты кольца и другие РТИ',
+  },
+  {
+    title: 'Материалы верхнего строения пути ВСП',
+  },
+]
 </script>
 
 <style lang="scss" scoped>
@@ -62,7 +82,6 @@ const heroList = heroItems
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  overflow: hidden;
   &__nav-list {
     display: flex;
     align-items: center;
@@ -163,15 +182,6 @@ const heroList = heroItems
     bottom: 0;
     width: auto;
     height: 550px;
-    animation: move-in 3s ease-out forwards;
-  }
-  @keyframes move-in {
-    0% {
-      right: -400px;
-    }
-    100% {
-      right: 0;
-    }
   }
 }
 </style>

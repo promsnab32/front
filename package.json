@@ -10,7 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@vee-validate/nuxt": "^4.15.0",
+    "@vee-validate/yup": "^4.15.0",
     "nuxt": "^3.15.4",
+    "nuxt-swiper": "^2.0.0",
     "vue": "latest",
     "vue-router": "latest",
     "vue-yandex-maps": "^2.1.6"

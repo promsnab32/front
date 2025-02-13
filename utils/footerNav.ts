@@ -3,7 +3,7 @@ export const footerNav = [
     title: "Главная",
     links: [
       { name: "Каталог товаров", link: "/" },
-      { name: "О компании", link: "/" },
+      { name: "О компании", link: "/about" },
       { name: "Форма заявки", link: "/" },
       { name: "Контакты", link: "/" },
     ],
