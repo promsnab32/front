@@ -12,6 +12,9 @@ export function useCustomFetch<T extends string>(
 			'Content-type': 'application/json',
 			Authorization: 'Bearer ' + config.token,
 		},
+		query: {
+			populate: '*'
+		}
 	}
 	const params = defu(options, defaults)
 

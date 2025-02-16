@@ -1,15 +1,22 @@
 <script lang="ts" setup>
-import { shallowRef } from 'vue'
 import type { YMap } from '@yandex/ymaps3-types'
+import { shallowRef } from 'vue'
 import {
   YandexMap,
-  YandexMapDefaultSchemeLayer,
+  YandexMapControlButton,
+  YandexMapControls,
   YandexMapDefaultFeaturesLayer,
-  YandexMapDefaultMarker,
+  YandexMapDefaultSchemeLayer,
+  YandexMapEntity,
+  YandexMapMarker,
 } from 'vue-yandex-maps'
 
 //Можно использовать для различных преобразований
 const map = shallowRef<null | YMap>(null)
+
+const handleClickOnBtnToMap = () => {
+  window.open('https://yandex.ru/maps', '_blank')
+}
 </script>
 
 <template>
@@ -17,7 +24,7 @@ const map = shallowRef<null | YMap>(null)
     v-model="map"
     :settings="{
       location: {
-        center: [37.617644, 55.755819],
+        center: [37.692384, 55.681321],
         zoom: 9,
       },
     }"
@@ -26,24 +33,44 @@ const map = shallowRef<null | YMap>(null)
   >
     <yandex-map-default-scheme-layer />
     <yandex-map-default-features-layer />
-    <yandex-map-default-marker
-      :settings="{ coordinates: [37.617644, 55.755819] }"
-    />
+    <yandex-map-marker
+      position="top-center left-center"
+      :settings="{ coordinates: [37.692384, 55.681321] }"
+    >
+      <img class="pin" src="/svg/marker.svg" alt="" />
+    </yandex-map-marker>
+    <yandex-map-controls
+      :settings="{
+        position: 'bottom left',
+        orientation: 'vertical',
+      }"
+    >
+      <YandexMapEntity>
+        <yandex-map-control-button>
+          <button @click="handleClickOnBtnToMap" class="btn-reset btn-map">
+            Посмотреть на карте
+          </button>
+        </yandex-map-control-button>
+      </YandexMapEntity>
+    </yandex-map-controls>
   </yandex-map>
 </template>
 
 <style lang="scss" scoped>
-.marker {
+.pin {
+  cursor: pointer;
+  max-width: unset;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+.btn-map {
   position: relative;
-  width: 20px;
-  height: 20px;
-  background: #ff0000;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  text-align: center;
+  z-index: 200000000000000;
+  cursor: pointer;
+  padding: 10px 26px;
   color: #fff;
-  font-weight: bold;
-  line-height: 20px;
+  border-radius: 11px;
+  background: #356697;
 }
 </style>
