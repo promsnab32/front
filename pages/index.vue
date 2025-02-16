@@ -8,14 +8,13 @@
 
 <script lang="ts" setup>
 import { useServerFetch } from '~/composables/useServerFetch'
+import { apiCatalog } from '~~/utils/apiUrls'
 definePageMeta({
   layout: 'main',
 })
 
 const handleCLick = async () => {
-  const { data } = await useServerFetch(
-    '/sub-categories/hedh2y3oqifgd1osip4mtf89'
-  )
+  const { data } = await useServerFetch(apiCatalog)
   console.log(data.value)
 }
 </script>

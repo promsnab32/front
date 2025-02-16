@@ -1,7 +1,7 @@
 import { defu } from 'defu'
 import type { UseFetchOptions } from 'nuxt/app'
 
-const token = '2bc76972b0da428cd308d886e5c179676f4e3537c5696ef89b1eee91777f184aafcbae896247b670924b361a391bd123253f415dd4d834d13e0c97793f95d500820d88a07739f8ec3187df2cfef77e7e545baf0c48110dbe1235ad6133b3ab0a29c713e0484bcda699eb8038b9c54569d3291fd3fa7d0ca2110af80043981992'
+const token = 'a08cb53d3ccea251a3f0a9d2ebb5eb8bdae1c09185a85e28e247b8e0867311de06ea3e868cc1dfdd16ffdfa80aa586a613de777464a09022f0d4bde23692bce0ef2d7d954cc12a23cc815ef1a70eec539837a8525f717932ad70a36a6befa07444d3220ff74c62be52ed6c63aedd8843ca8fa01f72e27e82c837e9e3de8e6bab'
 export function useServerFetch<T>(
   url: string,
   options: UseFetchOptions<T> = {},
