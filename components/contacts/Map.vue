@@ -7,7 +7,6 @@ import {
   YandexMapControls,
   YandexMapDefaultFeaturesLayer,
   YandexMapDefaultSchemeLayer,
-  YandexMapEntity,
   YandexMapMarker,
 } from 'vue-yandex-maps'
 
@@ -15,7 +14,10 @@ import {
 const map = shallowRef<null | YMap>(null)
 
 const handleClickOnBtnToMap = () => {
-  window.open('https://yandex.ru/maps', '_blank')
+  window.open(
+    'https://yandex.ru/maps?ll=37.692384,55.681321&z=18&l=map&pt=37.692384,55.681321',
+    '_blank'
+  )
 }
 </script>
 
@@ -45,13 +47,15 @@ const handleClickOnBtnToMap = () => {
         orientation: 'vertical',
       }"
     >
-      <YandexMapEntity>
-        <yandex-map-control-button>
-          <button @click="handleClickOnBtnToMap" class="btn-reset btn-map">
-            Посмотреть на карте
-          </button>
-        </yandex-map-control-button>
-      </YandexMapEntity>
+      <YandexMapControlButton
+        style="padding: 0"
+        :settings="{
+          onClick: handleClickOnBtnToMap,
+          background: '#356697',
+        }"
+      >
+        <button class="btn-reset btn-map">Посмотреть на карте</button>
+      </YandexMapControlButton>
     </yandex-map-controls>
   </yandex-map>
 </template>
@@ -68,7 +72,7 @@ const handleClickOnBtnToMap = () => {
   position: relative;
   z-index: 200000000000000;
   cursor: pointer;
-  padding: 10px 26px;
+  padding: 5px 20px;
   color: #fff;
   border-radius: 11px;
   background: #356697;
