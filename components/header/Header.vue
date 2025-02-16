@@ -2,44 +2,56 @@
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
-     <img class="header__logo" src="/img/logo.png" alt="logo">
-     <span class="header__dash"></span>
-      <div class="header__search">
-        <input
+        <img class="header__logo" src="/img/logo.png" alt="logo" />
+        <span class="header__dash"></span>
+        <div class="header__search">
+          <input
             class="header__search-input"
             type="text"
             placeholder="Поиск по сайту"
           />
           <button class="header__search-btn">Поиск</button>
-      </div>
-      <span class="header__dash"></span>
-      <div class="header__contacts">
-      <div class="header__links">
-        <ul class="list-reset header__link-list">
-          <li class="header__link-item">
-            <img class="header__img" src="/img/tel.png" alt="phone">
-            <a class="header__link" href="tel:+79776404030">+7 (977) 640-40-30</a>
-          </li>
-          <li class="header__link-item">
-            <img class="header__img" src="/img/mail.png" alt="mail">
-            <a class="header__link" href="mailto:zakaz@promms.ru">zakaz@promms.ru</a>
-          </li>
-        </ul>
-        <div class="header__link-list">
-          <a class="header__link" href="#"><img class="header__img" src="/img/telegram.png" alt="telegram"></a>
-          <a class="header__link" href="#"><img class="header__img" src="/img/whatsapp.png" alt="whatsapp"></a>
+        </div>
+        <span class="header__dash"></span>
+        <div class="header__contacts">
+          <div class="header__links">
+            <ul class="list-reset header__link-list">
+              <li class="header__link-item">
+                <img class="header__img" src="/img/tel.png" alt="phone" />
+                <a class="header__link" href="tel:+79776404030"
+                  >+7 (977) 640-40-30</a
+                >
+              </li>
+              <li class="header__link-item">
+                <img class="header__img" src="/img/mail.png" alt="mail" />
+                <a class="header__link" href="mailto:zakaz@promms.ru"
+                  >zakaz@promms.ru</a
+                >
+              </li>
+            </ul>
+            <div class="header__link-list">
+              <a class="header__link" href="#"
+                ><img
+                  class="header__img"
+                  src="/img/telegram.png"
+                  alt="telegram"
+              /></a>
+              <a class="header__link" href="#"
+                ><img
+                  class="header__img"
+                  src="/img/whatsapp.png"
+                  alt="whatsapp"
+              /></a>
+            </div>
+          </div>
+          <button class="btn-reset header__btn">Заказать звонок</button>
         </div>
       </div>
-      <button class="btn-reset header__btn">Заказать звонок</button>
-      </div>
-    </div>
     </div>
   </header>
 </template>
 
-<script lang="ts" setup>
-
-</script>
+<script lang="ts" setup></script>
 
 <style scoped lang="scss">
 .header {
@@ -52,35 +64,56 @@
     display: inline-block;
     width: 1px;
     height: 165px;
-    background-color: #8F8F8F;
+    background-color: #8f8f8f;
   }
   &__logo {
     width: 200px;
     height: auto;
   }
+  &__search {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    z-index: 1;
+  }
   &__search-input {
     border-radius: 7px;
-border: 1px solid #8F8F8F;
-background: #FFF;
-font-family: 'Manrope';
+    border: 1px solid #8f8f8f;
+    background: #fff;
+    font-family: 'Manrope';
     color: black;
     font-size: 15px;
     font-weight: 700;
-    padding: 20px 0 20px 10px;
-    min-width: 550px;
+    padding: 25px 0 25px 10px;
     max-height: 30px;
+    outline: none;
+    width: 73%;
+    z-index: 3;
   }
-  &__search-btn {
-    padding: 10px 70px;
-    color: #FFF;
-    font-size: 15px;
-font-style: normal;
-font-family: 'Manrope';
-font-weight: 500;
-text-transform: capitalize;
-background-color: #356697;
-border-radius: 7px;
 
+  &__search-btn {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 15px 71px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Manrope';
+    font-weight: 500;
+    background-color: #356697;
+    border-radius: 7px;
+    border: 1px solid #8f8f8f;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #2d4f76;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
   &__contacts {
     display: flex;
@@ -95,7 +128,7 @@ border-radius: 7px;
   &__link-list {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
   }
   &__link-item {
     display: flex;
@@ -109,18 +142,18 @@ border-radius: 7px;
   &__link {
     color: #222;
     font-family: 'Manrope';
-font-size: 18px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
   }
   &__btn {
     color: #222;
     font-family: 'Manrope';
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-text-decoration: underline;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration: underline;
   }
 }
 </style>

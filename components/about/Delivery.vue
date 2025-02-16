@@ -241,7 +241,7 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     background: #fb6415;
   }
   &__error {
-    color: red;
+    color: rgb(106, 17, 17);
     font-family: 'Manrope';
     font-size: 12px;
     font-style: normal;
