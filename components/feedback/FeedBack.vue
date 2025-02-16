@@ -148,7 +148,7 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     gap: 10px;
   }
   &__error {
-    color: rgb(106, 17, 17);
+    color: #ff0000;
     font-family: 'Manrope';
     font-size: 12px;
     font-style: normal;
