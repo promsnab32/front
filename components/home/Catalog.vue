@@ -7,9 +7,15 @@
       </div>
       <div class="catalog__wrapper">
         <ul class="list-reset catalog__list">
-          <li v-for="(item, index) in items" :key="index" class="catalog__item">
-            <img class="catalog__img" :src="item.img" alt="img" />
-            <h3 class="catalog__subtitle">{{ item.title }}</h3>
+          <li
+            v-for="(item, index) in catalogList"
+            :key="index"
+            class="catalog__item"
+          >
+            <NuxtLink :to="`category/${item.documentId}`">
+              <img class="catalog__img" :src="item.media" alt="img" />
+              <h3 class="catalog__subtitle">{{ item.title }}</h3>
+            </NuxtLink>
           </li>
         </ul>
       </div>
@@ -18,7 +24,11 @@
 </template>
 
 <script lang="ts" setup>
-const items = catalogHome
+import type { CatalogDTO } from '~~/types/app'
+
+defineProps<{
+  catalogList: CatalogDTO[]
+}>()
 </script>
 
 <style scoped lang="scss">

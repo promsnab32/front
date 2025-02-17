@@ -1,22 +1,21 @@
 <template>
   <div>
     <HomeHero />
-    <HomeCatalog />
-    <button @click="handleCLick">click</button>
+    <HomeCatalog :catalog-list="catalogList" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useServerFetch } from '~/composables/useServerFetch'
+import { useCustomFetch } from '#imports'
+import type { CatalogDTO, ResponseDTO } from '~/types/app'
 import { apiCatalog } from '~~/utils/apiUrls'
 definePageMeta({
   layout: 'main',
 })
-
-const handleCLick = async () => {
-  const { data } = await useServerFetch(apiCatalog)
-  console.log(data.value)
-}
+const { data } = await useAsyncData<ResponseDTO<CatalogDTO[]>>('catalog', () =>
+  useCustomFetch<'', ResponseDTO<CatalogDTO[]>>(apiCatalog)
+)
+const catalogList = computed(() => data.value?.data || ([] as CatalogDTO[]))
 </script>
 
 <style></style>
