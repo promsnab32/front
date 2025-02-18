@@ -13,7 +13,7 @@ defineProps<{
       <li v-for="bottomItem in item.categories">
         <NuxtLink
           class="catalog__list-link"
-          :to="`category/products/${bottomItem.documentId}`"
+          :to="`products/${bottomItem.documentId}`"
         >
           <span class="catalog__list-item">• {{ bottomItem.title }}</span>
         </NuxtLink>

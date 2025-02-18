@@ -5,13 +5,21 @@ import { apiCatalog } from '~~/utils/apiUrls'
 const route = useRoute()
 const id = route.params.id as string
 
-const categoryItem = await useLoadData<CatalogDTO>(`${apiCatalog}/${id}`)
+const data = await useLoadData<CatalogDTO>(`${apiCatalog}/${id}`)
+
+const categoryItem = computed(() => data.value?.categories)
 </script>
 
 <template>
-  <CategoryMain :categoty-item="categoryItem || ({} as CatalogDTO)" />
-
-  <NuxtPage />
+  <section class="section">
+    <div class="container">
+      <ul>
+        <li v-for="item in categoryItem">
+          {{ item.title }}
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped></style>

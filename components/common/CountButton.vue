@@ -1,11 +1,16 @@
 <script lang="ts" setup>
-defineProps<{
+const props = defineProps<{
   whenClick: () => void
 }>()
+
+const handleClick = (e: MouseEvent) => {
+  e.stopImmediatePropagation()
+  props.whenClick()
+}
 </script>
 
 <template>
-  <button class="btn-reset counter__btn" @click="whenClick">
+  <button class="btn-reset counter__btn" @click="handleClick">
     <slot />
   </button>
 </template>

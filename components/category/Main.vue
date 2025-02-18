@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import type { CategoryDTO } from '~/types/app'
-defineProps<{
+const props = defineProps<{
   categoryItem: CategoryDTO
 }>()
 </script>
 
 <template>
-  <CategoryTable :productList="categoryItem.products" />
+  <CategoryTable :productList="props.categoryItem.products" />
 </template>
 
 <style lang="scss" scoped>

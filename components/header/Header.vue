@@ -6,14 +6,7 @@
           <img class="header__logo" src="/img/logo.png" alt="logo" />
         </NuxtLink>
         <span class="header__dash"></span>
-        <div class="header__search">
-          <input
-            class="header__search-input"
-            type="text"
-            placeholder="Поиск по сайту"
-          />
-          <button class="header__search-btn">Поиск</button>
-        </div>
+        <HeaderSearch />
         <span class="header__dash"></span>
         <div class="header__contacts">
           <div class="header__links">
@@ -94,12 +87,7 @@
     width: 200px;
     height: auto;
   }
-  &__search {
-    position: relative;
-    width: 100%;
-    max-width: 650px;
-    z-index: 1;
-  }
+
   &__search-input {
     border-radius: 7px;
     border: 1px solid #8f8f8f;
@@ -115,30 +103,6 @@
     z-index: 3;
   }
 
-  &__search-btn {
-    z-index: -1;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 15px 71px;
-    color: #fff;
-    font-size: 14px;
-    font-family: 'Manrope';
-    font-weight: 500;
-    background-color: #356697;
-    border-radius: 7px;
-    border: 1px solid #8f8f8f;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: #2d4f76;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
   &__contacts {
     display: flex;
     flex-direction: column;

@@ -32,6 +32,12 @@ const optionsTable: TableOptionsWithReactiveData<ProductDTO> = {
   getCoreRowModel: getCoreRowModel(),
 }
 const table = useVueTable(optionsTable) as Table<ProductDTO>
+
+const handleClickOnRow = (e: MouseEvent, id: string) => {
+  e.stopPropagation()
+
+  navigateTo(`/product/${id}`)
+}
 </script>
 
 <template>
@@ -55,6 +61,7 @@ const table = useVueTable(optionsTable) as Table<ProductDTO>
         class="table__row"
       >
         <td
+          @click="(e) => handleClickOnRow(e, row.original.documentId)"
           v-for="cell in row.getVisibleCells()"
           :key="cell.id"
           :style="
@@ -94,6 +101,7 @@ const table = useVueTable(optionsTable) as Table<ProductDTO>
   // border-spacing: 0 10px; /* Задаем отступ между строками */
 
   &__row {
+    cursor: pointer;
     position: relative;
   }
   &__row::after {
