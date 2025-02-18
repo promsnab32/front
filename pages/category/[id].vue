@@ -1,24 +1,15 @@
 <script lang="ts" setup>
-import { useCustomFetch } from '#imports'
-import type { CatalogDTO, ResponseDTO } from '~/types/app'
+import { useLoadData } from '#imports'
+import type { CatalogDTO } from '~/types/app'
 import { apiCatalog } from '~~/utils/apiUrls'
 const route = useRoute()
 const id = route.params.id as string
 
-const { data } = await useAsyncData<ResponseDTO<CatalogDTO>>('category', () =>
-  useCustomFetch<'', ResponseDTO<CatalogDTO>>(`${apiCatalog}/${id}`)
-)
-
-const categoryList = computed(() => data.value?.data || ({} as CatalogDTO))
-console.log(categoryList.value)
+const categoryItem = await useLoadData<CatalogDTO>(`${apiCatalog}/${id}`)
 </script>
 
 <template>
-  <div v-for="(item, index) in categoryList.categories" :key="index">
-    <NuxtLink :to="`products/${item.documentId}`">
-      <h2>{{ item.title }}</h2>
-    </NuxtLink>
-  </div>
+  <CategoryMain :categoty-item="categoryItem || ({} as CatalogDTO)" />
 
   <NuxtPage />
 </template>

@@ -10,10 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.10.1",
+    "@tanstack/vue-table": "^8.21.2",
     "@vee-validate/nuxt": "^4.15.0",
     "@vee-validate/yup": "^4.15.0",
     "nuxt": "^3.15.4",
     "nuxt-swiper": "^2.0.0",
+    "pinia": "^3.0.1",
     "vue": "latest",
     "vue-router": "latest",
     "vue-yandex-maps": "^2.1.6"

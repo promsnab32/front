@@ -2,7 +2,9 @@
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
-        <img class="header__logo" src="/img/logo.png" alt="logo" />
+        <NuxtLink to="/" style="text-decoration: none; cursor: pointer">
+          <img class="header__logo" src="/img/logo.png" alt="logo" />
+        </NuxtLink>
         <span class="header__dash"></span>
         <div class="header__search">
           <input
@@ -29,19 +31,29 @@
                 >
               </li>
             </ul>
-            <div class="header__link-list">
-              <a class="header__link" href="#"
-                ><img
-                  class="header__img"
-                  src="/img/telegram.png"
-                  alt="telegram"
-              /></a>
-              <a class="header__link" href="#"
-                ><img
-                  class="header__img"
-                  src="/img/whatsapp.png"
-                  alt="whatsapp"
-              /></a>
+            <div class="header__link-icons-wrapper">
+              <div class="header__link-list">
+                <a class="header__link" href="#"
+                  ><img
+                    class="header__img"
+                    src="/img/telegram.png"
+                    alt="telegram"
+                /></a>
+                <a class="header__link" href="#"
+                  ><img
+                    class="header__img"
+                    src="/img/whatsapp.png"
+                    alt="whatsapp"
+                /></a>
+              </div>
+              <div>
+                <NuxtLink
+                  to="/cart"
+                  style="text-decoration: none; cursor: pointer"
+                >
+                  <img class="header__img-cart" src="/img/cart.png" alt="vk" />
+                </NuxtLink>
+              </div>
             </div>
           </div>
           <button class="btn-reset header__btn">Заказать звонок</button>
@@ -60,11 +72,23 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  &__img-cart {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+  }
   &__dash {
     display: inline-block;
     width: 1px;
     height: 165px;
     background-color: #8f8f8f;
+  }
+
+  &__link-icons-wrapper {
+    display: flex;
+    gap: 24px;
+    align-items: center;
   }
   &__logo {
     width: 200px;

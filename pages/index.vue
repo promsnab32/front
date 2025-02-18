@@ -1,21 +1,18 @@
 <template>
   <div>
     <HomeHero />
-    <HomeCatalog :catalog-list="catalogList" />
+    <HomeCatalog :catalog-list="catalogList || []" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useCustomFetch } from '#imports'
-import type { CatalogDTO, ResponseDTO } from '~/types/app'
-import { apiCatalog } from '~~/utils/apiUrls'
+import { useLoadData } from '#imports'
+import type { CatalogDTO } from '~/types/app'
 definePageMeta({
   layout: 'main',
 })
-const { data } = await useAsyncData<ResponseDTO<CatalogDTO[]>>('catalog', () =>
-  useCustomFetch<'', ResponseDTO<CatalogDTO[]>>(apiCatalog)
-)
-const catalogList = computed(() => data.value?.data || ([] as CatalogDTO[]))
+
+const catalogList = await useLoadData<CatalogDTO[]>(apiCatalog)
 </script>
 
 <style></style>

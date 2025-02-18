@@ -25,6 +25,7 @@ export interface ProductDTO {
   documentId: string;
   title: string;
   has: boolean;
+  count: number;
   article?: any;
   createdAt: string;
   updatedAt: string;
