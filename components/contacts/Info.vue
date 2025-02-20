@@ -134,8 +134,8 @@ const qrCodes = [
   }
 
   &__img {
-    width: 186px;
-    height: 186px;
+    width: 150px;
+    height: 150px;
   }
 
   &__wrapper-img {
