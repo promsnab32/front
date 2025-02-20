@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <div class="catalog__item">
     <NuxtLink :to="`category/${link}`" class="catalog__list-link">
-      <img class="catalog__img" src="/svg/zapasnie-teplovozi.svg" alt="img" />
+      <img class="catalog__img" :src="img" alt="img" />
       <h3 class="catalog__subtitle">{{ title }}</h3>
     </NuxtLink>
   </div>
@@ -18,7 +18,10 @@ defineProps<{
 <style lang="scss" scoped>
 .catalog {
   &__item {
-    height: 242px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 242px;
     padding: 10px 10px 12px 10px;
     border-radius: 12px;
     border: 1px solid #8f8f8f;
@@ -26,10 +29,9 @@ defineProps<{
   }
 
   &__img {
-    margin-bottom: 15px;
-    width: 100%;
-    max-width: 150px;
-    height: auto;
+    margin-bottom: 25px;
+    max-width: 220px;
+    max-height: 220px;
   }
 
   &__list-link {

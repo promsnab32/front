@@ -10,7 +10,11 @@
       <div class="catalog__wrapper">
         <ul class="list-reset catalog__list">
           <li v-for="(topItem, index) in catalogList" :key="index">
-            <CommonItem :link="topItem.documentId" :title="topItem.title" />
+            <CommonItem
+              :link="topItem.documentId"
+              :title="topItem.title"
+              :img="topItem.media[0].url"
+            />
           </li>
         </ul>
       </div>

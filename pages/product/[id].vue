@@ -10,8 +10,7 @@ const product = await useLoadData<ProductDTO>(`${apiProducts}/${id}`)
 
 <template>
   <div>
-    <h2>{{ product?.title }}</h2>
-    <h2>{{ product?.article }}</h2>
+    <ProductItem :product="product" />
   </div>
 
   <NuxtPage />

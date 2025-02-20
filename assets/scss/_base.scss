@@ -77,27 +77,27 @@ table {
 		padding-right: 0;
 	}
 
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		transform: translateY(-85%);
-		right: 23%;
-		width: 2px;
-		height: 340px;
-		background-color: var(--c-active);
+	// &::before {
+	// 	content: '';
+	// 	position: absolute;
+	// 	top: 0;
+	// 	transform: translateY(-85%);
+	// 	right: 23%;
+	// 	width: 2px;
+	// 	height: 340px;
+	// 	background-color: var(--c-active);
 
-		@media screen and (max-width: 1790px) {
-			right: 19%;
-		}
+	// 	@media screen and (max-width: 1790px) {
+	// 		right: 19%;
+	// 	}
 
-		@media screen and (max-width: 1200px) {
-			right: -2%;
-		}
-		@media screen and (max-width: 640px) {
-			display: none;
-		}
-	}
+	// 	@media screen and (max-width: 1200px) {
+	// 		right: -2%;
+	// 	}
+	// 	@media screen and (max-width: 640px) {
+	// 		display: none;
+	// 	}
+	// }
 }
 
 .section {

@@ -1,5 +1,5 @@
 export const navList = [
-  { type: 'link', link: '/', title: 'каталог  Товаров' },
+  { type: 'link', link: '/catalog', title: 'каталог  Товаров' },
   { type: 'dash' },
   { type: 'link', link: '/feedback', title: 'форма заявки' },
   { type: 'dash' },

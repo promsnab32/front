@@ -38,7 +38,7 @@
           </li>
         </ul>
       </div>
-      <NuxtLink to="/" class="hero__link">Перейти в каталог</NuxtLink>
+      <NuxtLink to="/catalog" class="hero__link">Перейти в каталог</NuxtLink>
     </div>
     <img src="/img/hero-2.png" alt="Train" class="hero__train-image" />
   </section>
