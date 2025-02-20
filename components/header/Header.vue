@@ -26,25 +26,40 @@
             </ul>
             <div class="header__link-icons-wrapper">
               <div class="header__link-list">
-                <a class="header__link" href="#"
+                <a
+                  class="header__link"
+                  href="https://t.me/+79776404030"
+                  target="_blank"
                   ><img
                     class="header__img"
                     src="/img/telegram.png"
                     alt="telegram"
                 /></a>
-                <a class="header__link" href="#"
+                <a
+                  class="header__link"
+                  href="https://api.whatsapp.com/send?phone=79776404030"
+                  target="_blank"
                   ><img
                     class="header__img"
                     src="/img/whatsapp.png"
                     alt="whatsapp"
                 /></a>
               </div>
-              <div>
+              <div class="header__cart-wrapper">
                 <NuxtLink
                   to="/cart"
                   style="text-decoration: none; cursor: pointer"
                 >
-                  <img class="header__img-cart" src="/img/cart.png" alt="vk" />
+                  <img
+                    class="header__img-cart"
+                    src="/img/cart-header.png"
+                    alt="vk"
+                  />
+                  <span
+                    class="header__cart-count"
+                    :class="{ 'header__cart-active': cartCount }"
+                    >{{ cartCount ? cartCount : '' }}</span
+                  >
                 </NuxtLink>
               </div>
             </div>
@@ -56,7 +71,10 @@
   </header>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const cartStore = useCartStore()
+const cartCount = computed(() => cartStore.cartList.length)
+</script>
 
 <style scoped lang="scss">
 .header {
@@ -67,8 +85,8 @@
   }
 
   &__img-cart {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
   }
   &__dash {
@@ -142,6 +160,22 @@
     font-style: normal;
     font-weight: 400;
     text-decoration: underline;
+  }
+  &__cart-wrapper {
+    position: relative;
+  }
+  &__cart-active {
+    position: absolute;
+    top: -19px;
+    right: 0;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Manrope';
+    color: #fff;
+    background: red;
+    border-radius: 50%;
+    padding: 0 7px;
+    opacity: 0.9;
   }
 }
 </style>

@@ -1,15 +1,18 @@
 <script lang="ts" setup>
 const qrCodes = [
   {
-    link: 'contacts',
-    title: 'Контакты',
+    link: 'https://vk.com/promsnabb',
+    img: 'vk',
+    title: 'ВКонтакте',
   },
   {
-    link: 'tg',
+    link: 'https://t.me/+79776404030',
+    img: 'telegram',
     title: 'Telegram',
   },
   {
-    link: 'whatsApp',
+    link: 'https://api.whatsapp.com/send?phone=79776404030',
+    img: 'whatsApp',
     title: 'WhatsApp',
   },
 ]
@@ -69,11 +72,18 @@ const qrCodes = [
     </div>
 
     <div class="info__wrapper-img">
-      <div v-for="{ link, title } in qrCodes" :key="link">
-        <img :src="`/svg/${link}-qr.svg`" alt="" class="info__img-qr" />
-        <span class="info__img-decr">
-          {{ title }}
-        </span>
+      <div v-for="{ link, title, img } in qrCodes" :key="link">
+        <a
+          :href="link"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="text-decoration: none"
+        >
+          <img :src="`/img/${img}.png`" alt="" class="info__img" />
+          <span class="info__img-decr">
+            {{ title }}
+          </span>
+        </a>
       </div>
     </div>
   </div>
@@ -123,7 +133,7 @@ const qrCodes = [
     padding-left: 30px;
   }
 
-  &__img-qr {
+  &__img {
     width: 186px;
     height: 186px;
   }

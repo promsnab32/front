@@ -9,15 +9,8 @@ const props = defineProps<{
 
 const refCount = ref(0)
 
-const body = {
-  name: props.title,
-  count: refCount.value,
-  article: props.article,
-  id: props.id,
-}
-
 const increaseCount = () => {
-  if (refCount.value < props.count) {
+  if (props.count !== null && refCount.value < props.count) {
     refCount.value++
   }
 }
@@ -30,7 +23,16 @@ const decreaseCount = () => {
 
 const addToCart = () => {
   if (refCount.value > 0) {
-    cartStore.updateCart(body, refCount.value)
+    cartStore.updateCart(
+      {
+        name: props.title,
+        count: refCount.value,
+        article: props.article,
+        id: props.id,
+      },
+      refCount.value
+    )
+
     refCount.value = 0
   }
 }
@@ -40,8 +42,14 @@ const addToCart = () => {
   <div class="counter">
     <span class="counter__text counter__text-1">Колличество</span>
     <span class="counter__text counter__text-2">{{ refCount }}</span>
-    <CommonCountButton :when-click="decreaseCount">-</CommonCountButton>
-    <CommonCountButton :when-click="increaseCount">+</CommonCountButton>
+    <CommonCountButton :when-click="decreaseCount" :disabled="refCount <= 0"
+      >-</CommonCountButton
+    >
+    <CommonCountButton
+      :when-click="increaseCount"
+      :disabled="props.count !== null && refCount >= props.count"
+      >+</CommonCountButton
+    >
   </div>
   <button class="btn-reset counter__btn-2" @click="addToCart">
     Добавить в корзину

@@ -16,7 +16,7 @@
             >
               {{ product.has ? 'В наличии' : 'Нет в наличии' }}
             </span>
-            <ProductCount
+            <ProductCountButton
               :count="product.count"
               :title="product.title"
               :article="product.article"
@@ -38,7 +38,9 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ product: ProductDTO }>()
+import { ProductCountButton } from '#components'
+
+defineProps<{ product: any }>()
 </script>
 
 <style lang="scss" scoped>

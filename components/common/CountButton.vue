@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const props = defineProps<{
   whenClick: () => void
+  disabled?: boolean
 }>()
 
 const handleClick = (e: MouseEvent) => {
@@ -10,7 +11,11 @@ const handleClick = (e: MouseEvent) => {
 </script>
 
 <template>
-  <button class="btn-reset counter__btn" @click="handleClick">
+  <button
+    class="btn-reset counter__btn"
+    @click="handleClick"
+    :disabled="disabled"
+  >
     <slot />
   </button>
 </template>
@@ -28,5 +33,9 @@ const handleClick = (e: MouseEvent) => {
   background: #356697;
   padding: 18px 37px;
   padding-top: 11px;
+  opacity: 1;
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 </style>

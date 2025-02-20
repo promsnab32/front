@@ -2,7 +2,6 @@
 import type { Table, TableOptionsWithReactiveData } from '@tanstack/vue-table'
 import { getCoreRowModel, useVueTable } from '@tanstack/vue-table'
 import type { ProductDTO } from '~/types/app'
-
 const props = defineProps<{
   productList: ProductDTO[]
 }>()
@@ -92,11 +91,17 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
       </tr>
     </tbody>
   </table>
+  <div class="cart__wrapper">
+    <NuxtLink to="/cart" style="text-decoration: none; cursor: pointer">
+      <img class="cart__img" src="/img/cart.png" alt="cart" />
+    </NuxtLink>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .table {
   width: 100%;
+  margin-bottom: 50px;
   // border-collapse: separate; /* Важно для работы border-spacing */
   // border-spacing: 0 10px; /* Задаем отступ между строками */
 
@@ -163,10 +168,18 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     color: #f41515;
   }
 }
-
 .divider {
   width: 100%;
   height: 1px;
   background: #8f8f8f;
+}
+.cart__wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.cart__img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
 </style>
