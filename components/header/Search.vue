@@ -121,7 +121,6 @@ const whenChange = () => {
 
   &__item-text {
     color: #222;
-
     font-family: Manrope;
     font-size: 20px;
     font-style: normal;

@@ -49,11 +49,14 @@ defineProps<{
 
   &__list-item {
     color: #fff;
-    font-family: Manrope;
+    font-family: 'Manrope';
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: 21px;
+    @media screen and (max-width: 786px) {
+      font-size: 16px;
+    }
   }
 }
 </style>

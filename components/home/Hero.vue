@@ -38,9 +38,14 @@
           </li>
         </ul>
       </div>
-      <NuxtLink to="/catalog" class="hero__link">Перейти в каталог</NuxtLink>
+      <div class="hero__link-wrapper">
+        <NuxtLink to="/catalog" class="hero__link">Перейти в каталог</NuxtLink>
+      </div>
     </div>
-    <img src="/img/hero-2.png" alt="Train" class="hero__train-image" />
+    <picture>
+      <source srcset="/img/hero-mobile.png" media="(max-width: 1032px)" />
+      <img src="/img/hero-2.png" alt="Train" class="hero__train-image" />
+    </picture>
   </section>
 </template>
 
@@ -82,6 +87,16 @@ const heroItems = [
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  z-index: 1;
+  @media screen and (max-width: 1287px) {
+    min-height: 105vh;
+  }
+  @media screen and (max-width: 786px) {
+    min-height: 70vh;
+  }
+  @media screen and (max-width: 636px) {
+    min-height: 65vh;
+  }
   &__nav-list {
     display: flex;
     align-items: center;
@@ -90,6 +105,9 @@ const heroItems = [
   &__nav {
     padding: 25px 15px;
     border-bottom: 1px solid #8f8f8f;
+    @media screen and (max-width: 636px) {
+      display: none;
+    }
   }
   &__nav-link {
     color: #fff;
@@ -99,6 +117,9 @@ const heroItems = [
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
+    @media screen and (max-width: 1287px) {
+      font-size: 14px;
+    }
   }
   &__dash {
     display: inline-block;
@@ -111,9 +132,26 @@ const heroItems = [
     margin-bottom: 66px;
     display: flex;
     justify-content: space-between;
+    @media screen and (max-width: 1287px) {
+      flex-direction: column;
+      margin-bottom: 26px;
+    }
+    @media screen and (max-width: 786px) {
+      margin-bottom: 240px;
+    }
+    @media screen and (max-width: 636px) {
+      padding-top: 30px;
+      margin-bottom: 210px;
+    }
   }
   &__content-2 {
     margin-bottom: 66px;
+    @media screen and (max-width: 1287px) {
+      margin-bottom: 46px;
+    }
+    @media screen and (max-width: 786px) {
+      display: none;
+    }
   }
   &__content-wrapper {
     display: flex;
@@ -128,6 +166,21 @@ const heroItems = [
     font-weight: 500;
     line-height: 58px;
     text-transform: uppercase;
+    @media screen and (max-width: 1457px) {
+      font-size: 40px;
+      max-width: 600px;
+    }
+    @media screen and (max-width: 1287px) {
+      order: 1;
+    }
+    @media screen and (max-width: 786px) {
+      font-size: 20px;
+      line-height: normal;
+    }
+    @media screen and (max-width: 636px) {
+      font-size: 15px;
+      max-width: 250px;
+    }
   }
   &__subtitle {
     color: #fff;
@@ -137,6 +190,13 @@ const heroItems = [
     font-weight: 500;
     line-height: 58px;
     text-transform: uppercase;
+    @media screen and (max-width: 1287px) {
+      text-align: right;
+      line-height: normal;
+    }
+    @media screen and (max-width: 786px) {
+      font-size: 21px;
+    }
   }
   &__subtitle-2 {
     color: #fff;
@@ -148,6 +208,18 @@ const heroItems = [
     line-height: 100px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    @media screen and (max-width: 1613px) {
+      font-size: 70px;
+    }
+    @media screen and (max-width: 1287px) {
+      margin-bottom: 15px;
+      text-align: right;
+      line-height: normal;
+    }
+    @media screen and (max-width: 786px) {
+      line-height: 65px; /* 92.857% */
+      margin-bottom: 30px;
+    }
   }
   &__list {
     display: flex;
@@ -162,6 +234,9 @@ const heroItems = [
     font-style: normal;
     font-weight: 500;
     line-height: 35px;
+    @media screen and (max-width: 1613px) {
+      font-size: 20px;
+    }
   }
   &__link {
     padding: 17px 55px;
@@ -175,6 +250,11 @@ const heroItems = [
     background-color: #fb6415;
     border-radius: 7px;
     text-decoration: none;
+    @media screen and (max-width: 636px) {
+      padding: 13px 30px;
+      font-size: 16px;
+      z-index: 9999;
+    }
   }
   &__train-image {
     position: absolute;
@@ -182,6 +262,25 @@ const heroItems = [
     bottom: 0;
     width: auto;
     height: 550px;
+    @media screen and (max-width: 1756px) {
+      height: 450px;
+    }
+    @media screen and (max-width: 1349px) {
+      height: 350px;
+    }
+    @media screen and (max-width: 1168px) {
+      height: 280px;
+    }
+    @media screen and (max-width: 636px) {
+      height: 320px;
+      z-index: -1;
+    }
+  }
+  &__link-wrapper {
+    @media screen and (max-width: 636px) {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 </style>

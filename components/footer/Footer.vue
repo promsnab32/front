@@ -43,6 +43,15 @@
               </li>
             </ul>
           </nav>
+          <div class="footer__links-mobile">
+            <a class="footer__link-mobile" href="tel:+79776404030"
+              >+7 (977) 640-40-30</a
+            >
+            <a class="footer__link-mobile" href="mailto:zakaz@promms.ru"
+              >zakaz@promms.ru</a
+            >
+            <p class="footer__link-mobile">Москва ул. Речников 17 корп.1</p>
+          </div>
         </div>
       </div>
       <span class="footer__copyright"
@@ -61,6 +70,9 @@
     margin-bottom: 35px;
     display: grid;
     grid-template-columns: 30% 70%;
+    @media screen and (max-width: 1334px) {
+      grid-template-columns: 1fr;
+    }
   }
   &__descr {
     margin-bottom: 22px;
@@ -71,13 +83,27 @@
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
+    @media screen and (max-width: 1334px) {
+      font-size: 14px;
+    }
+    @media screen and (max-width: 444px) {
+      text-align: right;
+    }
   }
   &__logo {
     margin-bottom: 25px;
+    @media screen and (max-width: 444px) {
+      width: 90px;
+      height: auto;
+    }
   }
-  &__links {
+  &__links,
+  &__address {
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 1334px) {
+      display: none;
+    }
   }
   &__link {
     width: max-content;
@@ -92,17 +118,29 @@
   &__content {
     display: flex;
     gap: 110px;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (max-width: 1334px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
   }
   &__nav {
     display: flex;
     gap: 110px;
+    @media screen and (max-width: 786px) {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
   &__policy-link {
     color: #000;
     font-family: 'Manrope';
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 23px;
     text-decoration: none;
   }
@@ -112,7 +150,7 @@
     font-family: 'Manrope';
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 23px;
   }
   &__link-items {
@@ -139,6 +177,31 @@
     font-style: normal;
     font-weight: 400;
     line-height: 23px;
+  }
+  &__info {
+    @media screen and (max-width: 1334px) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+  }
+  &__links-mobile {
+    display: none;
+    @media screen and (max-width: 1334px) {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  &__link-mobile {
+    color: #222;
+    font-family: 'Manrope';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    text-decoration: none;
   }
 }
 </style>

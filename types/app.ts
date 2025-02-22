@@ -7,6 +7,7 @@ export interface CatalogDTO {
   publishedAt: string;
   media?: any;
   categories: CategoryDTO[];
+  products: ProductDTO[];
 }
 
 export interface CategoryDTO {

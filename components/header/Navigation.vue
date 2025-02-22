@@ -39,13 +39,24 @@ const items = navList
   background-size: cover;
   background-repeat: no-repeat;
   height: 84px;
+  @media screen and (max-width: 636px) {
+    background: #082246;
+  }
+  @media screen and (max-width: 370px) {
+    height: 110px;
+  }
   &__nav-list {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media screen and (max-width: 370px) {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
   }
   &__nav {
-    padding: 25px 15px;
+    padding: 25px 0;
   }
   &__nav-link {
     color: #fff;
@@ -55,12 +66,31 @@ const items = navList
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
+    @media screen and (max-width: 748px) {
+      font-size: 14px;
+    }
+    @media screen and (max-width: 586px) {
+      font-size: 10px;
+    }
   }
   &__dash {
     display: inline-block;
     width: 1px;
     height: 20px;
     background: #fff;
+    @media screen and (max-width: 748px) {
+      height: 15px;
+    }
+    @media screen and (max-width: 586px) {
+      height: 12px;
+    }
+    @media screen and (max-width: 406px) {
+      display: none;
+    }
   }
+
+  // .container {
+  //   padding: 0 10px;
+  // }
 }
 </style>

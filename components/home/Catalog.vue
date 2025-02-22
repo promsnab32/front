@@ -1,5 +1,6 @@
 <template>
   <section class="catalog">
+    <HeaderNavigation class="catalog__navigation" />
     <div class="container">
       <div class="catalog__wrapper-title">
         <h2 class="catalog__title">Каталог</h2>
@@ -18,6 +19,11 @@
           </li>
         </ul>
       </div>
+      <div class="catalog__link-mobile-wrapper">
+        <NuxtLink class="catalog__link-mobile" to="/catalog"
+          >Перейти в каталог</NuxtLink
+        >
+      </div>
     </div>
   </section>
 </template>
@@ -32,12 +38,21 @@ defineProps<{
 
 <style scoped lang="scss">
 .catalog {
-  padding: 53px 0 109px 0;
+  padding: 20px 0 20px 0;
+  @media screen and (max-width: 786px) {
+    margin-bottom: 10px;
+  }
+  @media screen and (max-width: 636px) {
+    padding: 0 0 20px 0;
+  }
   &__wrapper-title {
     margin-bottom: 31px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media screen and (max-width: 636px) {
+      padding: 20px 0 0 0;
+    }
   }
   &__title {
     color: #000;
@@ -47,6 +62,9 @@ defineProps<{
     font-weight: 500;
     line-height: 58px; /* 116% */
     text-transform: uppercase;
+    @media screen and (max-width: 786px) {
+      font-size: 40px;
+    }
   }
 
   &__link {
@@ -60,12 +78,56 @@ defineProps<{
     line-height: 21px;
     border-radius: 7px;
     text-decoration: none;
+    @media screen and (max-width: 786px) {
+      display: none;
+    }
   }
-
+  &__link-mobile {
+    display: none;
+    @media screen and (max-width: 786px) {
+      padding: 19px 48px;
+      background-color: #356697;
+      color: #fff;
+      font-family: 'Manrope';
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
+      border-radius: 7px;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      text-align: center;
+      max-width: 277px;
+      min-height: 55px;
+    }
+  }
+  &__link-mobile-wrapper {
+    display: flex;
+    justify-content: center;
+  }
   &__list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 18px;
+    @media screen and (max-width: 1372px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 988px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 786px) {
+      margin-bottom: 10px;
+    }
+    @media screen and (max-width: 648px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &__navigation {
+    display: none;
+    @media screen and (max-width: 636px) {
+      display: block;
+    }
   }
 }
 </style>

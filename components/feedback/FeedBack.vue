@@ -104,7 +104,7 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
-  padding: 50px 0 50px 0;
+  padding: 30px 0 50px 0;
   width: 100%;
   min-height: 750px;
   &__title {
@@ -114,8 +114,16 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     font-size: 50px;
     font-style: normal;
     font-weight: 500;
-    line-height: 58px;
+    line-height: normal;
     text-transform: uppercase;
+    @media screen and (max-width: 748px) {
+      line-height: normal;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    @media screen and (max-width: 636px) {
+      font-size: 25px;
+    }
   }
   &__wrapper {
     padding: 35px 48px 79px 48px;
@@ -123,6 +131,9 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     border: 1px solid #8f8f8f;
     background: rgba(174, 174, 174, 0.16);
     backdrop-filter: blur(35px);
+    @media screen and (max-width: 1286px) {
+      padding: 20px 15px 50px 15px;
+    }
   }
   &__description {
     max-width: 400px;
@@ -137,8 +148,13 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
   &__form-wrapper {
     margin-bottom: 24px;
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 1fr 1fr;
     gap: 33px;
+    @media screen and (max-width: 1286px) {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
   }
   &__form-left,
   &__form-right {
@@ -172,6 +188,12 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
       font-weight: 500;
       line-height: 21px;
     }
+    @media screen and (max-width: 748px) {
+      padding: 12px 21px;
+      &::placeholder {
+        font-size: 18px;
+      }
+    }
   }
   &__textarea {
     min-height: 132px;
@@ -189,6 +211,12 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
       font-weight: 500;
       line-height: 21px;
     }
+    @media screen and (max-width: 748px) {
+      padding: 12px 21px;
+      &::placeholder {
+        font-size: 18px;
+      }
+    }
   }
   &__btn {
     margin-bottom: 35px;
@@ -202,6 +230,11 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     line-height: 21px;
     border-radius: 10px;
     background: #fb6415;
+    @media screen and (max-width: 748px) {
+      padding: 15px;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
   }
   &__policy {
     color: #fff;
@@ -240,6 +273,16 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     font-weight: 500;
     line-height: 21px;
     text-align: center;
+    @media screen and (max-width: 748px) {
+      padding: 12px 21px;
+      font-size: 18px;
+      width: 250px;
+    }
+    @media screen and (max-width: 514px) {
+      padding: 12px 0px;
+      font-size: 13px;
+      width: 160px;
+    }
   }
 
   &__file-label:hover {
@@ -253,6 +296,10 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+    @media screen and (max-width: 748px) {
+      padding: 12px 21px;
+      font-size: 18px;
+    }
   }
 }
 </style>

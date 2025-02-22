@@ -50,6 +50,9 @@ defineProps<{
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
+    @media screen and (max-width: 786px) {
+      font-size: 16px;
+    }
   }
 }
 </style>

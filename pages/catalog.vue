@@ -17,5 +17,9 @@ const catalogList = await useLoadData<CatalogDTO[]>(apiCatalog)
 <style lang="scss" scoped>
 .section__title {
   margin-bottom: 31px;
+  @media screen and (max-width: 786px) {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
 }
 </style>
