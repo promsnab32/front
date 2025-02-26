@@ -58,7 +58,7 @@
                 >
                   <img
                     class="header__img-cart"
-                    src="/img/cart-header.png"
+                    src="/img/cart-header1.png"
                     alt="vk"
                   />
                   <span
@@ -105,6 +105,10 @@ const cartCount = computed(() => cartStore.cartList.length)
     @media screen and (max-width: 688px) {
       width: 35px;
       height: 35px;
+    }
+    @media screen and (max-width: 370px) {
+      width: 25px;
+      height: 25px;
     }
   }
   &__dash {
@@ -249,7 +253,7 @@ const cartCount = computed(() => cartStore.cartList.length)
   }
   &__cart-active {
     position: absolute;
-    top: -10px;
+    top: -4px;
     right: -5px;
     font-size: 12px;
     font-weight: 600;
@@ -257,11 +261,15 @@ const cartCount = computed(() => cartStore.cartList.length)
     color: #fff;
     background: red;
     border-radius: 50%;
-    padding: 0 7px;
+    padding: 2px 8px;
     opacity: 0.9;
     @media screen and (max-width: 688px) {
       font-size: 10px;
-      padding: 0 5px;
+      padding: 0px 5px;
+      top: -2px;
+    }
+    @media screen and (max-width: 370px) {
+      font-size: 9px;
     }
   }
 }

@@ -30,6 +30,9 @@
 <style lang="scss" scoped>
 .hero {
   padding: 30px 0 67px 0;
+  @media screen and (max-width: 900px) {
+    padding: 30px 0 37px 0;
+  }
   &__title {
     margin-bottom: 24px;
     color: #222;
@@ -58,8 +61,8 @@
     &:last-child {
       margin-bottom: 0;
     }
-    @media screen and (max-width: 636px) {
-      font-size: 25px;
+    @media screen and (max-width: 900px) {
+      font-size: 18px;
     }
   }
 }

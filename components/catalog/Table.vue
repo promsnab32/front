@@ -16,7 +16,7 @@ const columns = [
     header: 'Артикул',
   },
   {
-    accessorKey: 'has',
+    accessorKey: 'availability',
     header: 'Наличие',
   },
   {
@@ -67,16 +67,17 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
           "
         >
           <span
-            v-if="cell.getContext().column.id === 'has'"
+            v-if="cell.getContext().column.id === 'availability'"
             class="table__body-text"
-            :class="
-              cell.getValue() === true
-                ? 'text-value-success'
-                : 'text-value-danger'
-            "
-            >{{
-              cell.getValue() === true ? 'В наличии' : 'Нет в наличии'
-            }}</span
+            :class="{
+              available: cell.getValue() === 'В наличии',
+              unavailable: cell.getValue() === 'Нет в наличии',
+              'pre-order':
+                cell.getValue() !== 'В наличии' &&
+                cell.getValue() !== 'Нет в наличии',
+            }"
+            style="min-width: 226px"
+            >{{ cell.getValue() }}</span
           >
           <CategoryCounter
             :title="cell.getContext().row.original.title"
@@ -143,13 +144,14 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
 
   &__body-text {
     color: #222;
-
     font-family: Manrope;
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: 21px;
-    padding: 20px 40px;
+    padding: 20px 10px;
+    width: 100%;
+    display: block;
   }
 }
 .text-value {
@@ -166,6 +168,20 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
   &-danger {
     color: #f41515;
   }
+  &__body-text-availability {
+    width: 200px;
+  }
+}
+.available {
+  color: green;
+}
+
+.unavailable {
+  color: red;
+}
+
+.pre-order {
+  color: rgb(0, 0, 0);
 }
 .divider {
   width: 100%;

@@ -55,15 +55,9 @@ const whenChange = () => {
             <span class="search__item-text">
               {{ item.title }}
             </span>
-            <span
-              class="search__item-text search__item-text-has"
-              :class="
-                item.has === true
-                  ? 'search__item-text-has-success'
-                  : 'search__item-text-has-danger'
-              "
-              >{{ item.has ? 'В наличии' : 'Нет в наличии' }}</span
-            >
+            <span class="search__item-text search__item-text-has">{{
+              item.availability
+            }}</span>
           </NuxtLink>
         </li>
       </ul>

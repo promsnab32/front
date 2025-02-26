@@ -12,6 +12,7 @@ defineProps<{
       :link="item.documentId"
       :title="item.title"
       :img="item.media[0].url"
+      :isBold="true"
     />
     <ul class="list-reset catalog__list">
       <li v-for="bottomItem in item.categories">

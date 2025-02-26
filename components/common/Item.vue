@@ -3,6 +3,7 @@ defineProps<{
   link: string
   title: string
   img?: string
+  isBold?: boolean
 }>()
 </script>
 
@@ -10,7 +11,9 @@ defineProps<{
   <div class="catalog__item">
     <NuxtLink :to="`category/${link}`" class="catalog__list-link">
       <img class="catalog__img" :src="img" alt="img" />
-      <h3 class="catalog__subtitle">{{ title }}</h3>
+      <h3 class="catalog__subtitle" :class="{ 'catalog__bold-title': isBold }">
+        {{ title }}
+      </h3>
     </NuxtLink>
   </div>
 </template>
@@ -53,6 +56,9 @@ defineProps<{
     @media screen and (max-width: 786px) {
       font-size: 16px;
     }
+  }
+  &__bold-title {
+    font-weight: 600;
   }
 }
 </style>

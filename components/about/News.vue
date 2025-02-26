@@ -4,7 +4,8 @@
       <h2 class="news__title">Новости</h2>
       <div class="news__slider">
         <CommonSwiper
-          :slidesperview="3"
+          :slidesperview="slidesPerView"
+          :breakpoints="breakpoints"
           @instance="setSwiperInstance"
           :slide-card="card"
           custom-button-next="news__custom-button-next"
@@ -38,6 +39,20 @@
 const swiperRef = ref<any>(null)
 const card = newsCard
 
+const slidesPerView = ref()
+
+const breakpoints = {
+  1200: {
+    slidesPerView: 3,
+  },
+  768: {
+    slidesPerView: 2,
+  },
+  480: {
+    slidesPerView: 1,
+  },
+}
+
 const setSwiperInstance = (instance: any) => {
   swiperRef.value = instance
 }
@@ -67,15 +82,29 @@ const handleClickNext = () => {
     font-weight: 500;
     line-height: 58px;
     text-transform: uppercase;
+    @media screen and (max-width: 748px) {
+      line-height: normal;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+    @media screen and (max-width: 636px) {
+      font-size: 25px;
+    }
   }
   &__slider {
     margin-bottom: 20px;
   }
   &__news-wrapper {
-    padding: 90px 150px;
+    padding: 90px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 12px;
     border: 1px solid #8f8f8f;
     background: #f0f2f6;
+    @media screen and (max-width: 410px) {
+      padding: 40px 20px;
+    }
   }
   &__buttons {
     display: flex;

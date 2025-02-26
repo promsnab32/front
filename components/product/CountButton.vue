@@ -75,6 +75,11 @@ const addToCart = () => {
     font-size: 18px;
     font-weight: 500;
   }
+  // &__text-1 {
+  //   @media screen and (max-width: 500px) {
+  //     font-size: 16px;
+  //   }
+  // }
   &__text-2 {
     color: #000;
     text-align: center;
@@ -84,7 +89,11 @@ const addToCart = () => {
     line-height: 21px;
     border-radius: 10px;
     background: #fff;
-    padding: 18px 37px;
+    padding: 12px 30px;
+    @media screen and (max-width: 500px) {
+      padding: 12px 20px;
+      font-size: 18px;
+    }
   }
   &__btn-2 {
     margin-top: 20px;

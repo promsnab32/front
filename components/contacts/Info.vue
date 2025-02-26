@@ -48,24 +48,24 @@ const qrCodes = [
           Социальные сети:
           <a
             class="info__descr info__descr-link info__social"
-            href="http://"
+            href="https://vk.com/promsnabb"
             target="_blank"
             rel="noopener noreferrer"
-            >Facebook,</a
+            >ВКонтакте,</a
           >
           <a
             class="info__descr info__descr-link info__social"
-            href="http://"
+            href="https://t.me/+79776404030"
             target="_blank"
             rel="noopener noreferrer"
-            >Instagram,</a
+            >Telegram,</a
           >
           <a
             class="info__descr info__descr-link"
-            href="http://"
+            href="https://api.whatsapp.com/send?phone=79776404030"
             target="_blank"
             rel="noopener noreferrer"
-            >Twitter</a
+            >WhatsApp</a
           >
         </li>
       </ul>
@@ -106,11 +106,18 @@ const qrCodes = [
     font-weight: 500;
     line-height: 58px;
     text-transform: uppercase;
+    @media screen and (max-width: 748px) {
+      line-height: normal;
+      font-size: 40px;
+    }
+    @media screen and (max-width: 636px) {
+      font-size: 25px;
+    }
   }
 
   &__descr {
     color: #000;
-    font-family: Manrope;
+    font-family: 'Manrope';
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -118,6 +125,9 @@ const qrCodes = [
 
     &-link {
       text-decoration-line: underline;
+    }
+    @media screen and (max-width: 652px) {
+      font-size: 18px;
     }
   }
 
@@ -134,15 +144,28 @@ const qrCodes = [
   }
 
   &__img {
-    width: 150px;
-    height: 150px;
+    max-width: 150px;
+    height: 100%;
+    @media screen and (max-width: 1389px) {
+      max-width: 100px;
+    }
+    @media screen and (max-width: 564px) {
+      max-width: 200px;
+      min-width: 200px;
+    }
   }
 
   &__wrapper-img {
+    width: 100%;
     display: flex;
-    gap: 100px;
-    justify-content: space-between;
+    gap: 80px;
     align-items: center;
+    @media screen and (max-width: 652px) {
+      gap: 50px;
+    }
+    @media screen and (max-width: 564px) {
+      flex-direction: column;
+    }
   }
 
   &__img-decr {

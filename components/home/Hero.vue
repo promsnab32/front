@@ -208,6 +208,8 @@ const heroItems = [
     line-height: 100px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    text-decoration: underline #fff 2px;
+    text-underline-offset: 7px;
     @media screen and (max-width: 1613px) {
       font-size: 70px;
     }
@@ -219,6 +221,7 @@ const heroItems = [
     @media screen and (max-width: 786px) {
       line-height: 65px; /* 92.857% */
       margin-bottom: 30px;
+      text-decoration: none;
     }
   }
   &__list {

@@ -5,6 +5,7 @@
       :modules="[Navigation]"
       :pagination="pagination"
       :slides-per-view="slidesperview"
+      :breakpoints="breakpoints"
       space-between="50"
       :navigation="{
         nextEl: `.${customButtonNext}`,
@@ -40,6 +41,7 @@ defineProps<{
   customButtonNext?: string
   customButtonPrev?: string
   loop?: boolean
+  breakpoints?: any
   pagination?: object | boolean
 }>()
 </script>

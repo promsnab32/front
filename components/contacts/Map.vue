@@ -30,8 +30,9 @@ const handleClickOnBtnToMap = () => {
         zoom: 9,
       },
     }"
-    width="880px"
-    height="563px"
+    class="map"
+    width="100%"
+    height="500px"
   >
     <yandex-map-default-scheme-layer />
     <yandex-map-default-features-layer />
@@ -76,5 +77,11 @@ const handleClickOnBtnToMap = () => {
   color: #fff;
   border-radius: 11px;
   background: #356697;
+}
+@media screen and (max-width: 564px) {
+  .btn-map {
+    font-size: 12px;
+    padding: 0 0;
+  }
 }
 </style>
