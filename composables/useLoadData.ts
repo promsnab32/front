@@ -1,10 +1,10 @@
+import type { NitroFetchOptions } from 'nitropack'
 import type { ResponseDTO } from "~/types/app"
-export const useLoadData = async <T>(path: string) => {
+export const useLoadData = async <T extends string, K>(path: string, options: NitroFetchOptions<T> = {}) => {
 
-const { data } = await useAsyncData<ResponseDTO<T>>(path, () =>
-  useCustomFetch<'', ResponseDTO<T>>(path)
-)
-const catalogList = computed(() => data.value?.data)
+  const { data } = await useAsyncData<ResponseDTO<K>>(path, () =>
+    useCustomFetch<T, ResponseDTO<K>>(path, options)
+  )
 
-return catalogList
+  return data
 }

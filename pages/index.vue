@@ -1,7 +1,7 @@
 <template>
   <div>
     <HomeHero />
-    <HomeCatalog :catalog-list="catalogList || []" />
+    <HomeCatalog :catalog-list="catalogList?.data || []" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ definePageMeta({
   layout: 'main',
 })
 
-const catalogList = await useLoadData<CatalogDTO[]>(apiCatalog)
+const catalogList = await useLoadData<'', CatalogDTO[]>(apiCatalog)
 </script>
 
 <style></style>

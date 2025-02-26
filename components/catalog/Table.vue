@@ -5,7 +5,7 @@ import type { ProductDTO } from '~/types/app'
 const props = defineProps<{
   catalogsList: ProductDTO[]
 }>()
-const data = ref<ProductDTO[]>(props.catalogsList)
+const data = computed(() => props.catalogsList)
 const columns = [
   {
     accessorKey: 'title',

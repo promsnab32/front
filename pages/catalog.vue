@@ -2,14 +2,14 @@
 import { useLoadData } from '#imports'
 import type { CatalogDTO } from '~/types/app'
 
-const catalogList = await useLoadData<CatalogDTO[]>(apiCatalog)
+const catalogList = await useLoadData<'', CatalogDTO[]>(apiCatalog)
 </script>
 
 <template>
   <section class="section">
     <div class="container">
       <h1 class="title section__title">Каталог</h1>
-      <CatalogList :catalog-list="catalogList || []" />
+      <CatalogList :catalog-list="catalogList?.data || []" />
     </div>
   </section>
 </template>

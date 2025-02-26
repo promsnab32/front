@@ -1,31 +1,52 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import type { CategoryDTO, ResponseDTO } from '~/types/app'
-import { apiCategories } from '~~/utils/apiUrls'
+import type { ProductDTO, ResponseDTO } from '~/types/app'
+import { apiProducts } from '~~/utils/apiUrls'
 const route = useRoute()
 const id = route.params.id as string
-const totalPages = ref<number>(0)
+const totalPages = ref<number>(1)
 const currentPage = ref<number>(1)
 const pageSize = 10
+const productList = ref<ProductDTO[]>([])
 
-const categoryItem = await useLoadData<CategoryDTO>(`${apiCategories}/${id}`)
-
-const loadCategoryData = async () => {
-  console.log('Loading category data, currentPage:', currentPage.value)
-}
+productList.value = await useLoadData<'', ProductDTO[]>(apiProducts, {
+  query: {
+    'filters[category][documentId]': id,
+    'pagination[page]': currentPage.value,
+    'pagination[pageSize]': pageSize,
+  },
+}).then((data) => {
+  totalPages.value = data.value?.meta.pagination.pageCount as number
+  return (data.value && data.value.data) || []
+})
 
 const changePage = async (page: number) => {
   currentPage.value = page
-  await loadCategoryData()
+  try {
+    const response = await useCustomFetch<'', ResponseDTO<ProductDTO[]>>(
+      apiProducts,
+      {
+        query: {
+          'filters[category][documentId]': id,
+          'pagination[page]': currentPage.value,
+          'pagination[pageSize]': pageSize,
+        },
+      }
+    )
+    currentPage.value = response.meta.pagination.page
+    productList.value = response.data
+  } catch (error) {
+    console.error('Error fetching products:', error)
+  }
 }
 </script>
 
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="title">{{ categoryItem?.title }}</h1>
+      <h1 class="title">{{ productList?.[0].category.title }}</h1>
       <div class="table__wrapper">
-        <CategoryMain :category-item="categoryItem || ({} as CategoryDTO)" />
+        <CatalogMain :listCatalog="productList || []" />
         <CommonPagination
           :totalPages="totalPages"
           :currentPage="currentPage"

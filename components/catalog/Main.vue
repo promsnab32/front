@@ -1,12 +1,19 @@
 <script lang="ts" setup>
-import type { CatalogDTO } from '~/types/app'
+import type { ProductDTO } from '~/types/app'
 const props = defineProps<{
-  listCatalog: CatalogDTO
+  listCatalog: ProductDTO[]
 }>()
+
+watch(
+  () => props.listCatalog,
+  (newValue) => {
+    console.log(newValue)
+  }
+)
 </script>
 
 <template>
-  <CatalogTable :catalogsList="props.listCatalog.products" />
+  <CatalogTable :catalogsList="props.listCatalog" />
 </template>
 
 <style lang="scss" scoped>

@@ -22,6 +22,8 @@ export interface CategoryDTO {
 }
 
 export interface ProductDTO {
+  catalog: CatalogDTO;
+  category: CategoryDTO;
   id: number;
   documentId: string;
   title: string;
@@ -36,8 +38,11 @@ export interface ProductDTO {
 export interface ResponseDTO<T> {
 	data: T;
 	meta: {
-		total: number;
-		page: number;
-		limit: number;
+    pagination : {
+      total: number;
+      page: number;
+      pageSize: number;
+      pageCount: number
+    }
 	};
 }

@@ -5,7 +5,7 @@ import { apiProducts } from '~~/utils/apiUrls'
 const route = useRoute()
 const id = route.params.id as string
 
-const product = await useLoadData<ProductDTO>(`${apiProducts}/${id}`)
+const product = await useLoadData<'', ProductDTO>(`${apiProducts}/${id}`)
 </script>
 
 <template>
