@@ -39,11 +39,26 @@ const changePage = async (page: number) => {
     console.error('Error fetching products:', error)
   }
 }
+
+const getBradCrumbs = () => {
+  const data = [
+    {
+      title: productList.value?.[0].catalog.title,
+      documentId: productList.value?.[0].catalog.documentId,
+    },
+    {
+      title: productList.value?.[0].category.title,
+      documentId: productList.value?.[0].category.documentId,
+    },
+  ]
+  return data
+}
 </script>
 
 <template>
   <section class="section">
     <div class="container">
+      <CommonBreadCrumbs :crumbs="getBradCrumbs()" />
       <h1 class="title">{{ productList?.[0].category.title }}</h1>
       <div class="table__wrapper">
         <CatalogMain :listCatalog="productList || []" />
@@ -56,8 +71,6 @@ const changePage = async (page: number) => {
       </div>
     </div>
   </section>
-
-  <NuxtPage />
 </template>
 
 <style lang="scss" scoped>

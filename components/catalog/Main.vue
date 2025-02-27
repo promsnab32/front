@@ -3,13 +3,6 @@ import type { ProductDTO } from '~/types/app'
 const props = defineProps<{
   listCatalog: ProductDTO[]
 }>()
-
-watch(
-  () => props.listCatalog,
-  (newValue) => {
-    console.log(newValue)
-  }
-)
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="product">
+  <div>
+    <div class="product" v-if="product">
       <h2 class="product__title">{{ product.title }}</h2>
       <div class="product__wrapper">
         <div class="product__content">
@@ -67,13 +67,14 @@
         </div>
       </div>
     </div>
+    <div v-else>Информация по товара не найдена</div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ProductCountButton } from '#components'
-
-defineProps<{ product: any }>()
+import type { ProductDTO } from '~/types/app'
+defineProps<{ product: ProductDTO | null }>()
 </script>
 
 <style lang="scss" scoped>

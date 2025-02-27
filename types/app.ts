@@ -25,6 +25,7 @@ export interface ProductDTO {
   catalog: CatalogDTO;
   category: CategoryDTO;
   id: number;
+  media?: any
   documentId: string;
   title: string;
   availability: string;

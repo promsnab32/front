@@ -33,7 +33,6 @@ const table = useVueTable(optionsTable) as Table<ProductDTO>
 
 const handleClickOnRow = (e: MouseEvent, id: string) => {
   e.stopPropagation()
-
   navigateTo(`/product/${id}`)
 }
 </script>

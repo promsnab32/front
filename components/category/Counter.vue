@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 const cartStore = useCartStore()
 const props = defineProps<{
-  count: number | null
+  count: number
   title: string
   article: string
   id: string
 }>()
 
 const refCount = ref(props.count || 0)
-
+const getCount = computed(() => refCount.value)
 const body = {
   name: props.title,
   count: refCount.value,
@@ -16,6 +16,9 @@ const body = {
   id: props.id,
 }
 
+watch(props, (newValue) => {
+  refCount.value = newValue.count
+})
 const addToCart = () => {
   if (refCount.value === 0 || refCount.value === null) return
 
