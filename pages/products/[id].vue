@@ -4,19 +4,19 @@ import type { ProductDTO, ResponseDTO } from '~/types/app'
 import { apiProducts } from '~~/utils/apiUrls'
 const route = useRoute()
 const id = route.params.id as string
-const totalPages = ref<number>(1)
+const totalProducts = ref<number>(1)
 const currentPage = ref<number>(1)
-const pageSize = 10
+const pageSize = ref(10)
 const productList = ref<ProductDTO[]>([])
 
 productList.value = await useLoadData<'', ProductDTO[]>(apiProducts, {
   query: {
     'filters[category][documentId]': id,
     'pagination[page]': currentPage.value,
-    'pagination[pageSize]': pageSize,
+    'pagination[pageSize]': pageSize.value,
   },
 }).then((data) => {
-  totalPages.value = data.value?.meta.pagination.pageCount as number
+  totalProducts.value = data.value?.meta.pagination.total as number
   return (data.value && data.value.data) || []
 })
 
@@ -29,7 +29,7 @@ const changePage = async (page: number) => {
         query: {
           'filters[category][documentId]': id,
           'pagination[page]': currentPage.value,
-          'pagination[pageSize]': pageSize,
+          'pagination[pageSize]': pageSize.value,
         },
       }
     )
@@ -48,9 +48,10 @@ const changePage = async (page: number) => {
       <div class="table__wrapper">
         <CatalogMain :listCatalog="productList || []" />
         <CommonPagination
-          :totalPages="totalPages"
+          :totalPages="totalProducts"
           :currentPage="currentPage"
           @page-change="changePage"
+          @rows-change="(e) => (pageSize = e)"
         />
       </div>
     </div>

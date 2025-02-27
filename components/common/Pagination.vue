@@ -1,57 +1,33 @@
 <template>
   <div class="pagination">
-    <button
-      @click="btnPrev"
-      class="btn-reset pagination__btn"
-      :disabled="currentPage === 1"
-    >
-      Назад
-    </button>
-    <button
-      v-for="pageNum in totalPages"
-      :key="pageNum"
-      @click="toPage(pageNum)"
-      class="btn-reset pagination__btn"
-      :class="{ active: pageNum === currentPage }"
-    >
-      {{ pageNum }}
-    </button>
-    <button
-      @click="btnNext"
-      class="btn-reset pagination__btn"
-      :disabled="currentPage === totalPages"
-    >
-      Вперед
-    </button>
+    <PrimePaginator
+      :rows="rows"
+      :totalRecords="totalPages"
+      :rowsPerPageOptions="[10, 20, 30, 40, 50]"
+      @page="(e) => whenChangePage(e.page)"
+      @update:rows="changeRows"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
+const rows = ref(10)
+
+const changeRows = (params: number) => {
+  emit('rows-change', params)
+}
+const whenChangePage = (value: number) => {
+  emit('page-change', value + 1)
+}
+defineProps<{
   totalPages: number
   currentPage: number
 }>()
 
-const emit = defineEmits(['page-change'])
-
-const btnPrev = () => {
-  if (props.currentPage > 1) {
-    emit('page-change', props.currentPage - 1)
-  }
-}
-
-const btnNext = () => {
-  if (props.currentPage < props.totalPages) {
-    emit('page-change', props.currentPage + 1)
-  }
-}
-
-const toPage = (pageNum: number) => {
-  emit('page-change', pageNum)
-}
+const emit = defineEmits(['page-change', 'rows-change'])
 </script>
 
-<style scoped>
+<style>
 .pagination {
   display: flex;
   justify-content: center;
