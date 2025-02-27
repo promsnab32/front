@@ -19,7 +19,7 @@ const whenChange = () => {
         {
           query: {
             'filters[title][$contains]': value.value.charAt(0).toUpperCase(),
-            'pagination[pageSize]': 30,
+            'pagination[pageSize]': 10,
           },
         }
       )

@@ -48,6 +48,7 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .breadcrumbs {
+  margin-bottom: 20px;
   &__list {
     display: flex;
     align-items: center;
