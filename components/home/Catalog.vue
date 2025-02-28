@@ -14,7 +14,7 @@
             <CommonItem
               :link="topItem.documentId"
               :title="topItem.title"
-              :img="topItem.media[0].url"
+              :img="topItem.media ? topItem.media[0].url : '/img/no-image.png'"
             />
           </li>
         </ul>

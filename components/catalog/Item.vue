@@ -11,7 +11,7 @@ defineProps<{
     <CommonItem
       :link="item.documentId"
       :title="item.title"
-      :img="item.media[0].url"
+      :img="item.media ? item.media[0].url : '/img/no-image.png'"
       :isBold="true"
     />
     <ul class="list-reset catalog__list">
