@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   css: ['~/assets/scss/main.scss','swiper/swiper-bundle.css'],
-  modules: ['@pinia/nuxt','vue-yandex-maps/nuxt','@vee-validate/nuxt', 'nuxt-swiper', '@primevue/nuxt-module'],
+  modules: ['@pinia/nuxt', 'vue-yandex-maps/nuxt', '@vee-validate/nuxt', 'nuxt-swiper', '@primevue/nuxt-module', 'nuxt-mail'],
   yandexMaps: {
     apikey: '31d1f52d-d373-4258-a82e-5731c2ec14e4',
   },
@@ -22,6 +22,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'http://213.226.124.210:1337/api',
-    }
+    },
+    mail: {
+      message: {
+        to: 'd.kireenkov@yandex.ru',
+      },
+      smtp: {
+        host: "smtp.yandex.com",
+        port: 465,
+      },
+    },
   },
 })

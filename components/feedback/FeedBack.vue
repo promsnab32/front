@@ -9,7 +9,9 @@
         <Form
           :validation-schema="validationSchema"
           id="form"
+          name="form"
           class="feedback__form"
+          @submit="handleSubmit"
         >
           <div class="feedback__form-wrapper">
             <div class="feedback__form-left">
@@ -52,6 +54,7 @@
             </div>
             <div class="feedback__form-right">
               <textarea
+                v-model="text"
                 class="feedback__textarea"
                 type="text"
                 id="text"
@@ -66,10 +69,7 @@
                   type="file"
                   id="file-input"
                   class="feedback__file-input"
-                  @change="
-                    fileName = ($event.target as HTMLInputElement).files?.[0]
-                      ?.name
-                  "
+                  @change="handleFileUpload"
                 />
 
                 <label for="file-input" class="feedback__file-label"
@@ -78,28 +78,82 @@
               </div>
             </div>
           </div>
-          <button class="btn-reset feedback__btn" type="submit">
+          <button class="btn-reset feedback__btn" type="submit" form="form">
             Отправить
           </button>
         </Form>
-        <p class="feedback__policy">
+        <a href="#" class="feedback__policy" target="_blank">
           Нажимая на кнопку вы даёте согласие на обработку персональных данных в
           соответствии с Политикой конфиденциальности
+        </a>
+        <p v-if="submitTrue" class="feedback__submiteTrue">
+          Спасибо, что выбрали нас! В течении 15 минут с Вами свяжется менеджер
+          по Вашей заявке.
         </p>
       </div>
+      <div v-if="loading" class="feedback__loading">Loading&#8230;</div>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { Form } from 'vee-validate'
+import { ref } from 'vue'
+import { Form, Field, ErrorMessage } from 'vee-validate'
+import { useTelegramSender } from '@/composables/useTelegramSender'
+import { useValidation } from '@/composables/useValidation'
+
+const loading = ref(false)
+const submitTrue = ref(false)
 const formSubmitted = ref(false)
-const fileName = ref<string | null>()
+
+const fileName = ref<string | null>(null)
+const text = ref('')
+const file = ref<File | null>(null)
+
 const validationSchema = useValidation(['name', 'phone', 'email'])
+const sendToTelegram = useTelegramSender()
+
+const buttonLoad = () => {
+  loading.value = true
+  setTimeout(() => {
+    loading.value = false
+    submitTrue.value = true
+  }, 2000)
+  setTimeout(() => {
+    submitTrue.value = false
+  }, 6000)
+}
+
+const handleFileUpload = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  file.value = target.files?.[0] || null
+  fileName.value = file.value?.name || 'Файл'
+}
+
+const handleSubmit = async (
+  values: any,
+  { resetForm }: { resetForm: () => void }
+) => {
+  try {
+    await sendToTelegram(
+      { ...values, text: text.value },
+      file.value || undefined
+    )
+    buttonLoad()
+  } catch (error) {
+    console.error('Ошибка при отправке формы:', error)
+  } finally {
+    resetForm()
+    text.value = ''
+    file.value = null
+    fileName.value = null
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .feedback {
+  position: relative;
   background-image: url('/img/feedback.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -179,6 +233,7 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     padding: 19px 32px;
     border-radius: 10px;
     background: #fff;
+    color: #8f8f8f;
     outline: none;
     &::placeholder {
       color: #8f8f8f;
@@ -201,6 +256,7 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     padding: 19px 32px;
     border-radius: 10px;
     background: #fff;
+    color: #8f8f8f;
     resize: none;
     outline: none;
     &::placeholder {
@@ -230,6 +286,11 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     line-height: 21px;
     border-radius: 10px;
     background: #fb6415;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+      background-color: #fff;
+      color: #fb6415;
+    }
     @media screen and (max-width: 748px) {
       padding: 15px;
       font-size: 18px;
@@ -237,12 +298,29 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     }
   }
   &__policy {
+    position: relative;
     color: #fff;
     font-family: 'Manrope';
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background-color: #fb6415;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
   &__file-upload {
     width: 100%;
@@ -299,6 +377,131 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     @media screen and (max-width: 748px) {
       padding: 12px 21px;
       font-size: 18px;
+    }
+  }
+  &__submiteTrue {
+    padding: 20px 0;
+    color: #08fe00;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+  }
+  &__loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    &:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    &:not(:required) {
+      font: 0/0 a;
+      color: transparent;
+      text-shadow: none;
+      background-color: transparent;
+      border: 0;
+    }
+    &:not(:required):after {
+      content: '';
+      display: block;
+      font-size: 10px;
+      width: 1em;
+      height: 1em;
+      margin-top: -0.5em;
+      -webkit-animation: spinner 1500ms infinite linear;
+      -moz-animation: spinner 1500ms infinite linear;
+      -ms-animation: spinner 1500ms infinite linear;
+      -o-animation: spinner 1500ms infinite linear;
+      animation: spinner 1500ms infinite linear;
+      border-radius: 0.5em;
+      -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0,
+        rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+      box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    }
+
+    @-webkit-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-moz-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-o-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
     }
   }
 }

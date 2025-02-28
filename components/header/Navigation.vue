@@ -66,6 +66,10 @@ const items = navList
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #fb6415;
+    }
     @media screen and (max-width: 748px) {
       font-size: 14px;
     }

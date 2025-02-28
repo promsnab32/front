@@ -117,6 +117,10 @@ const heroItems = [
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
+    transition: color 0.3s ease;
+    &:hover {
+      color: #fb6415;
+    }
     @media screen and (max-width: 1287px) {
       font-size: 14px;
     }
@@ -253,6 +257,11 @@ const heroItems = [
     background-color: #fb6415;
     border-radius: 7px;
     text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+      background-color: #fff;
+      color: #fb6415;
+    }
     @media screen and (max-width: 636px) {
       padding: 13px 30px;
       font-size: 16px;

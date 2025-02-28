@@ -17,12 +17,13 @@
             <a class="footer__link" href="mailto:zakaz@promms.ru"
               >zakaz@promms.ru</a
             >
+            <p class="footer__link-descr">Москва ул. Речников 17 корп.1</p>
           </div>
         </div>
         <div class="footer__content">
           <div class="footer__policy">
-            <NuxtLink class="footer__policy-link" href="/"
-              >Политика конфидициеальности</NuxtLink
+            <a class="footer__policy-link" href="/" target="_blank"
+              >Политика конфидициеальности</a
             >
           </div>
           <nav class="footer__nav">
@@ -37,9 +38,9 @@
                 :key="linkIndex"
                 class="footer__link-items"
               >
-                <a class="footer__link-item" :href="link.link">{{
+                <NuxtLink class="footer__link-item" :href="link.link">{{
                   link.name
-                }}</a>
+                }}</NuxtLink>
               </li>
             </ul>
           </nav>
@@ -114,6 +115,20 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #fb6415;
+    }
+  }
+  &__link-descr {
+    width: max-content;
+    text-decoration: none;
+    color: #222;
+    font-family: 'Manrope';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
   }
   &__content {
     display: flex;
@@ -136,6 +151,7 @@
     }
   }
   &__policy-link {
+    position: relative;
     color: #000;
     font-family: 'Manrope';
     font-size: 16px;
@@ -143,6 +159,21 @@
     font-weight: 700;
     line-height: 23px;
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background-color: #fb6415;
+      transition: width 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
   &__title {
     margin-bottom: 20px;
@@ -155,6 +186,7 @@
   }
   &__link-items {
     margin-bottom: 7px;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -167,6 +199,10 @@
     font-weight: 400;
     line-height: 20px;
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #fb6415;
+    }
   }
   &__copyright {
     display: block;
@@ -202,6 +238,10 @@
     font-weight: 600;
     line-height: 20px;
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #fb6415;
+    }
   }
 }
 </style>

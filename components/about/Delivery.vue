@@ -80,9 +80,9 @@
                 />
                 <button class="delivery__btn">Оставить заявку</button>
               </Form>
-              <span class="delivery__policy"
+              <a href="#" target="_blank" class="delivery__policy"
                 >Нажимая на кнопку вы даёте согласие на обработку персональных
-                данных в соответствии с Политикой конфиденциальности</span
+                данных в соответствии с Политикой конфиденциальности</a
               >
             </div>
           </div>
@@ -286,12 +286,18 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     }
   }
   &__policy {
+    position: relative;
     color: #8f8f8f;
     font-family: 'Manrope';
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 15px;
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
+    &:hover {
+      color: #fb6415;
+    }
   }
   &__btn {
     margin-bottom: 17px;
@@ -305,6 +311,12 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     line-height: 21px;
     border-radius: 10px;
     background: #fb6415;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+      background-color: #fff;
+      color: #fb6415;
+    }
     @media screen and (max-width: 748px) {
       padding: 15px;
       font-size: 18px;

@@ -77,7 +77,6 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
                 cell.getValue() !== 'В наличии' &&
                 cell.getValue() !== 'Нет в наличии',
             }"
-            style="min-width: 226px"
             >{{ cell.getValue() }}</span
           >
           <CategoryCounter
@@ -87,6 +86,12 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
             :count="cell.getContext().row.original.count"
             v-else-if="cell.getContext().column.id === 'counter'"
           />
+          <span
+            v-else-if="cell.getContext().column.id === 'article'"
+            class="table__body-text table__body-text-article"
+          >
+            {{ cell.getValue() }}
+          </span>
           <span class="table__body-text" v-else>{{ cell.getValue() }}</span>
         </td>
       </tr>
@@ -105,7 +110,24 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
   margin-bottom: 50px;
   // border-collapse: separate; /* Важно для работы border-spacing */
   // border-spacing: 0 10px; /* Задаем отступ между строками */
+  .table {
+    width: 100%;
+    table-layout: fixed;
+  }
 
+  .table__head th:first-child,
+  .table__row td:first-child {
+    width: auto;
+  }
+
+  .table__head th:not(:first-child),
+  .table__row td:not(:first-child) {
+    width: 270px;
+  }
+  .table__head th:nth-child(3),
+  .table__row td:nth-child(3) {
+    width: 100px;
+  }
   &__row {
     cursor: pointer;
     position: relative;
@@ -132,7 +154,7 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
 
   &__head-text {
     color: #222;
-
+    padding: 20px 60px 20px 20px;
     font-family: Manrope;
     font-size: 20px;
     font-style: normal;
@@ -153,6 +175,9 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     padding: 20px 10px;
     width: 100%;
     display: block;
+    &-article {
+      color: #8f8f8f;
+    }
   }
 }
 .text-value {
@@ -170,7 +195,6 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     color: #f41515;
   }
   &__body-text-availability {
-    width: 200px;
   }
 }
 .available {

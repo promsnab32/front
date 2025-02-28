@@ -55,6 +55,10 @@ defineProps<{
     font-style: normal;
     font-weight: 400;
     line-height: 21px;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #fb6415;
+    }
     @media screen and (max-width: 786px) {
       font-size: 16px;
     }

@@ -78,6 +78,10 @@ defineProps<{
     line-height: 21px;
     border-radius: 7px;
     text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    &:hover {
+      background-color: #1f4d7b;
+    }
     @media screen and (max-width: 786px) {
       display: none;
     }

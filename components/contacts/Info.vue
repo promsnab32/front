@@ -122,9 +122,12 @@ const qrCodes = [
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-
     &-link {
       text-decoration-line: underline;
+      transition: color 0.3s ease-in-out;
+      &:hover {
+        color: #204d80;
+      }
     }
     @media screen and (max-width: 652px) {
       font-size: 18px;
@@ -136,6 +139,10 @@ const qrCodes = [
   }
   &__reset-link {
     text-decoration-line: none;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #204d80;
+    }
   }
   &__list {
     margin: 0;

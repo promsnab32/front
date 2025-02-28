@@ -53,6 +53,10 @@ const props = defineProps<{
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
+    @media screen and (max-width: 664px) {
+      gap: 2px;
+    }
   }
   &__link {
     text-decoration: none;
@@ -62,6 +66,18 @@ const props = defineProps<{
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+    @media screen and (max-width: 1000px) {
+      font-size: 18px;
+    }
+    @media screen and (max-width: 840px) {
+      font-size: 14px;
+    }
+    @media screen and (max-width: 664px) {
+      font-size: 12px;
+    }
+    @media screen and (max-width: 374px) {
+      font-size: 10px;
+    }
   }
 }
 </style>

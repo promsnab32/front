@@ -7,7 +7,7 @@ const id = route.params.id as string
 const currentPage = ref(1)
 const totalProducts = ref(1)
 const productList = ref<ProductDTO[]>([])
-const pageSize = ref(10)
+const pageSize = ref(30)
 
 productList.value = await useLoadData<'', ProductDTO[]>(apiProducts, {
   query: {

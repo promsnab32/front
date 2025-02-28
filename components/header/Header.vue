@@ -230,6 +230,10 @@ const cartCount = computed(() => cartStore.cartList.length)
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #204d80;
+    }
     @media screen and (max-width: 688px) {
       font-size: 12px;
     }
@@ -241,6 +245,10 @@ const cartCount = computed(() => cartStore.cartList.length)
     font-style: normal;
     font-weight: 400;
     text-decoration: underline;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #204d80;
+    }
     @media screen and (max-width: 688px) {
       font-size: 14px;
     }

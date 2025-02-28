@@ -8,7 +8,6 @@ const props = defineProps<{
 }>()
 
 const refCount = ref(props.count || 0)
-const getCount = computed(() => refCount.value)
 const body = {
   name: props.title,
   count: refCount.value,
@@ -51,8 +50,6 @@ const removeInCart = () => {
   padding: 8px;
   width: max-content;
   padding-right: 0;
-  padding-left: 40px;
-
   &__text {
     color: #8f8f8f;
 

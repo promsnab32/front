@@ -116,6 +116,7 @@ textarea:not([rows]) {
 body {
   position: relative;
   font-family: "Akrobat", sans-serif;
+  
 }
 
 * {

@@ -6,27 +6,32 @@
         <div class="product__content">
           <h3 class="product__property">Характеристики</h3>
           <span class="product__article">Артикул — {{ product.article }}</span>
-
-          <div class="product__cart">
-            <span
-              class="product__value-text"
-              :class="{
-                'product__value-text': true,
-                available: product.availability === 'В наличии',
-                unavailable: product.availability === 'Нет в наличии',
-                'pre-order':
-                  product.availability !== 'В наличии' &&
-                  product.availability !== 'Нет в наличии',
-              }"
-            >
-              {{ product.availability }}
-            </span>
-            <ProductCountButton
-              :count="product.count"
-              :title="product.title"
-              :article="product.article"
-              :id="product.documentId"
-            />
+          <div v-if="product.description" class="product__description-wrapper">
+            <span class="product__property">Описание:</span>
+            <p class="product__description">{{ product.description }}</p>
+          </div>
+          <div class="product__cart-3">
+            <div class="product__cart">
+              <span
+                class="product__value-text"
+                :class="{
+                  'product__value-text': true,
+                  available: product.availability === 'В наличии',
+                  unavailable: product.availability === 'Нет в наличии',
+                  'pre-order':
+                    product.availability !== 'В наличии' &&
+                    product.availability !== 'Нет в наличии',
+                }"
+              >
+                {{ product.availability }}
+              </span>
+              <ProductCountButton
+                :count="product.count"
+                :title="product.title"
+                :article="product.article"
+                :id="product.documentId"
+              />
+            </div>
           </div>
         </div>
         <div class="product__img-wrapper">
@@ -80,10 +85,13 @@ defineProps<{ product: ProductDTO | null }>()
 <style lang="scss" scoped>
 .product {
   padding: 37px 0 50px 0;
+  @media screen and (max-width: 664px) {
+    padding: 17px 0 50px 0;
+  }
   &__wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: 58% 40%;
+    gap: 2%;
     @media screen and (max-width: 1200px) {
       grid-template-columns: 1fr;
       gap: 30px;
@@ -105,7 +113,7 @@ defineProps<{ product: ProductDTO | null }>()
     font-family: 'Manrope';
     font-size: 35px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 58px;
     text-transform: uppercase;
     text-wrap: inherit;
@@ -138,8 +146,24 @@ defineProps<{ product: ProductDTO | null }>()
       line-height: normal; /* 200% */
     }
   }
-  &__article {
+  &__description-wrapper {
     margin-bottom: 50px;
+    width: 100%;
+    max-width: 750px;
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 20px;
+    }
+  }
+  &__description {
+    color: #222;
+    font-family: 'Manrope';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+  }
+  &__article {
+    margin-bottom: 20px;
     color: #000;
     font-family: 'Manrope';
     font-size: 20px;
@@ -204,6 +228,10 @@ defineProps<{ product: ProductDTO | null }>()
     @media screen and (max-width: 1200px) {
       display: none;
     }
+  }
+  &__cart-3 {
+    display: flex;
+    justify-content: flex-end;
   }
   &__cart-2 {
     display: none;

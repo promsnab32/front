@@ -32,7 +32,9 @@ const cartStore = useCartStore()
       </li>
     </ul>
     <div class="cart__btn-send-wrapper">
-      <button class="btn-reset cart__btn-send-mail">Оформить заявку</button>
+      <NuxtLink to="/feedback" class="cart__btn-send-mail"
+        >Оформить заявку</NuxtLink
+      >
     </div>
   </div>
 </template>
@@ -64,6 +66,7 @@ const cartStore = useCartStore()
     font-weight: 500;
     line-height: 21px;
     padding: 20px 150px;
+    text-decoration: none;
   }
 
   &__item-title {

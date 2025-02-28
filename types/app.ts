@@ -34,6 +34,7 @@ export interface ProductDTO {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  description?: string;
 }
 
 export interface ResponseDTO<T> {
