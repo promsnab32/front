@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useCustomFetch } from '#imports'
-import type { ProductDTO, ResponseDTO } from '~/types/app'
+import { MeiliSearch } from 'meilisearch'
+import type { ProductDTO } from '~/types/app'
 const value = ref('')
 let timeoutId: any
 const searchList = ref<ProductDTO[]>([])
@@ -8,22 +8,25 @@ const searchList = ref<ProductDTO[]>([])
 const whenClickToLink = (id: string) => {
   navigateTo(`/product/${id}`)
   searchList.value = []
+  value.value = ''
 }
+
 const whenChange = () => {
   clearTimeout(timeoutId) // Сбрасываем предыдущий таймер
-
+  if (value.value.length < 1) {
+    searchList.value = []
+    return
+  }
   timeoutId = setTimeout(async () => {
     try {
-      const response = await useCustomFetch<'', ResponseDTO<ProductDTO[]>>(
-        apiProducts,
-        {
-          query: {
-            'filters[title][$contains]': value.value.charAt(0).toUpperCase(),
-            'pagination[pageSize]': 10,
-          },
-        }
-      )
-      searchList.value = response.data
+      const client = new MeiliSearch({
+        host: 'http://localhost:7700',
+        apiKey: 'lPB3PU0//jtcTU7R1umiaQ==',
+      })
+      const response = (await client
+        .index('product')
+        .search(value.value)) as any
+      searchList.value = response.hits
     } catch (error) {
       console.error('Ошибка при поиске:', error)
     }
@@ -101,6 +104,8 @@ const whenChange = () => {
   }
 
   &__list {
+    max-height: 400px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 5px;
