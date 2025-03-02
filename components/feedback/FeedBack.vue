@@ -99,7 +99,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import { useTelegramSender } from '@/composables/useTelegramSender'
+import { useFormSender } from '~/composables/useSender'
 import { useValidation } from '@/composables/useValidation'
 
 const loading = ref(false)
@@ -111,7 +111,7 @@ const text = ref('')
 const file = ref<File | null>(null)
 
 const validationSchema = useValidation(['name', 'phone', 'email'])
-const sendToTelegram = useTelegramSender()
+const sendToForm = useFormSender()
 
 const buttonLoad = () => {
   loading.value = true
@@ -135,10 +135,7 @@ const handleSubmit = async (
   { resetForm }: { resetForm: () => void }
 ) => {
   try {
-    await sendToTelegram(
-      { ...values, text: text.value },
-      file.value || undefined
-    )
+    await sendToForm({ ...values, text: text.value }, file.value || undefined)
     buttonLoad()
   } catch (error) {
     console.error('Ошибка при отправке формы:', error)

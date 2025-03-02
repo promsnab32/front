@@ -28,7 +28,6 @@ const items = navList
 
 <style lang="scss" scoped>
 .hero {
-  position: relative;
   background: linear-gradient(
       0deg,
       rgba(10, 37, 82, 0.69) 0%,
@@ -39,25 +38,45 @@ const items = navList
   background-size: cover;
   background-repeat: no-repeat;
   height: 84px;
+  overflow: hidden;
   @media screen and (max-width: 636px) {
     background: #082246;
   }
   @media screen and (max-width: 370px) {
     height: 110px;
   }
+
   &__nav-list {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     @media screen and (max-width: 370px) {
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
     }
   }
+
   &__nav {
+    position: relative;
     padding: 25px 0;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%; /* Выход за пределы контейнера */
+      right: -50%; /* Выход за пределы контейнера */
+      bottom: 0;
+      background-image: url('/img/hero.png');
+      background-size: cover;
+      filter: blur(2px);
+
+      width: 200%; /* Оставляем ширину 100% */
+    }
   }
+
   &__nav-link {
     color: #fff;
     text-align: center;
@@ -77,6 +96,7 @@ const items = navList
       font-size: 10px;
     }
   }
+
   &__dash {
     display: inline-block;
     width: 1px;
@@ -92,9 +112,5 @@ const items = navList
       display: none;
     }
   }
-
-  // .container {
-  //   padding: 0 10px;
-  // }
 }
 </style>

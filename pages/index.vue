@@ -12,7 +12,11 @@ definePageMeta({
   layout: 'main',
 })
 
-const catalogList = await useLoadData<'', CatalogDTO[]>(apiCatalog)
+const catalogList = await useLoadData<'', CatalogDTO[]>(apiCatalog, {
+  query: {
+    populate: ['media'],
+  },
+})
 </script>
 
 <style></style>

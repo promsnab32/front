@@ -76,6 +76,7 @@ const heroItems = [
 
 <style lang="scss" scoped>
 .hero {
+  overflow: hidden;
   position: relative;
   background: linear-gradient(
       0deg,
@@ -103,8 +104,22 @@ const heroItems = [
     justify-content: space-between;
   }
   &__nav {
+    position: relative;
     padding: 25px 15px;
     border-bottom: 1px solid #8f8f8f;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%; /* Выход за пределы контейнера */
+      right: -50%; /* Выход за пределы контейнера */
+      bottom: 0;
+      background-image: url('/img/hero.png');
+      background-size: cover;
+      filter: blur(1px);
+      z-index: -1;
+      width: 200%; /* Увеличиваем ширину, чтобы псевдоэлемент выходил за пределы */
+    }
     @media screen and (max-width: 636px) {
       display: none;
     }

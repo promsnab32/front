@@ -62,7 +62,7 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
           v-for="cell in row.getVisibleCells()"
           :key="cell.id"
           :style="
-            cell.getContext().column.id === 'counter' ? 'width: 350px' : ''
+            cell.getContext().column.id === 'counter' ? 'width: 250px' : ''
           "
         >
           <span
@@ -106,27 +106,48 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
 .table {
   width: 100%;
   margin-bottom: 50px;
+  @media screen and (max-width: 1286px) {
+    margin-bottom: 10px;
+  }
   .table {
     width: 100%;
     table-layout: fixed;
   }
-
   .table__head th:first-child,
   .table__row td:first-child {
-    width: auto;
+    width: 100%;
   }
 
   .table__head th:not(:first-child),
   .table__row td:not(:first-child) {
     width: 270px;
+    @media screen and (max-width: 1286px) {
+      width: 100%;
+    }
   }
   .table__head th:nth-child(3),
   .table__row td:nth-child(3) {
     width: 100px;
+    @media screen and (max-width: 1286px) {
+      width: 100%;
+    }
   }
   &__row {
     cursor: pointer;
     position: relative;
+    @media screen and (max-width: 1286px) {
+      padding: 17px 10px 17px 17px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 15px;
+      flex-direction: column;
+      border-radius: 14px;
+      border: 1px solid #8f8f8f;
+      background: #f8f8f8;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
   &__row::after {
     content: '';
@@ -137,9 +158,15 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     position: absolute;
     bottom: 0;
     left: 0;
+    @media screen and (max-width: 1286px) {
+      display: none;
+    }
   }
   &__head-value {
     margin-bottom: 20px;
+    @media screen and (max-width: 1286px) {
+      display: none;
+    }
   }
   &__head {
     border-radius: 14px;
@@ -173,6 +200,17 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     display: block;
     &-article {
       color: #8f8f8f;
+    }
+    @media screen and (max-width: 1286px) {
+      padding: 0;
+    }
+    @media screen and (max-width: 500px) {
+      line-height: 25px;
+    }
+  }
+  &__body-counter {
+    @media screen and (max-width: 420px) {
+      width: 100%;
     }
   }
 }

@@ -50,6 +50,9 @@ const removeInCart = () => {
   padding: 8px;
   width: max-content;
   padding-right: 0;
+  @media screen and (max-width: 1286px) {
+    padding: 0px;
+  }
   &__text {
     color: #8f8f8f;
 
@@ -62,11 +65,17 @@ const removeInCart = () => {
     &-1 {
       display: block;
       margin-right: 20px;
+      @media screen and (max-width: 1286px) {
+        margin-right: 0;
+      }
     }
 
     &-2 {
       width: 25px;
       margin-right: 20px;
+      @media screen and (max-width: 1286px) {
+        margin-right: 0;
+      }
     }
   }
 }

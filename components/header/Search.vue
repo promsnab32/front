@@ -20,7 +20,7 @@ const whenChange = () => {
   timeoutId = setTimeout(async () => {
     try {
       const client = new MeiliSearch({
-        host: 'http://localhost:7700',
+        host: 'http://213.226.124.210:7700',
         apiKey: 'lPB3PU0//jtcTU7R1umiaQ==',
       })
       const response = (await client
@@ -144,7 +144,7 @@ const whenChange = () => {
   position: relative;
   width: 100%;
   max-width: 650px;
-  z-index: 1;
+  z-index: 9999;
 }
 .header__search-input {
   border-radius: 7px;

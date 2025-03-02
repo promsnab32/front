@@ -64,7 +64,7 @@ table {
 .title {
 	color: #222;
 	font-family: Unbounded;
-	font-size: 50px;
+	font-size: 30px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 58px; /* 116% */
@@ -76,6 +76,11 @@ table {
 
 	@media screen and (max-width: 1200px) {
 		padding-right: 0;
+		line-height: normal; /* 116% */
+	}
+
+	@media screen and (max-width: 500px) {
+		font-size: 20px;
 	}
 
 	// &::before {

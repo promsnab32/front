@@ -66,6 +66,7 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
           :style="
             cell.getContext().column.id === 'counter' ? 'width: 350px' : ''
           "
+          class="table__body-counter"
         >
           <span
             v-if="cell.getContext().column.id === 'availability'"
@@ -123,10 +124,17 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
   .table__head th:not(:first-child),
   .table__row td:not(:first-child) {
     width: 270px;
+    @media screen and (max-width: 1286px) {
+      width: 100%;
+    }
   }
+
   .table__head th:nth-child(3),
   .table__row td:nth-child(3) {
     width: 100px;
+    @media screen and (max-width: 1286px) {
+      width: 100%;
+    }
   }
   &__row {
     cursor: pointer;
@@ -177,6 +185,11 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     display: block;
     &-article {
       color: #8f8f8f;
+    }
+  }
+  &__body-counter {
+    @media screen and (max-width: 420px) {
+      width: 100%;
     }
   }
 }
