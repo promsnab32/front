@@ -132,9 +132,13 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
       width: 100%;
     }
   }
+  .table__row td {
+    border-radius: 14px; /* Добавьте закругление для ячеек */
+  }
   &__row {
     cursor: pointer;
     position: relative;
+
     @media screen and (max-width: 1286px) {
       padding: 17px 10px 17px 17px;
       margin-bottom: 20px;
@@ -200,6 +204,7 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     display: block;
     &-article {
       color: #8f8f8f;
+      width: 250px;
     }
     @media screen and (max-width: 1286px) {
       padding: 0;

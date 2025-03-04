@@ -41,6 +41,11 @@
       <div class="hero__link-wrapper">
         <NuxtLink to="/catalog" class="hero__link">Перейти в каталог</NuxtLink>
       </div>
+      <div class="hero__cart-wrapper">
+        <NuxtLink to="/cart" style="text-decoration: none; cursor: pointer">
+          <img class="hero__img-cart" src="/img/cart.png" alt="vk" />
+        </NuxtLink>
+      </div>
     </div>
     <picture>
       <source srcset="/img/hero-mobile.png" media="(max-width: 1032px)" />
@@ -78,12 +83,7 @@ const heroItems = [
 .hero {
   overflow: hidden;
   position: relative;
-  background: linear-gradient(
-      0deg,
-      rgba(10, 37, 82, 0.69) 0%,
-      rgba(10, 37, 82, 0.69) 100%
-    ),
-    url('/img/hero.png');
+  background: url('/img/hero.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -105,7 +105,7 @@ const heroItems = [
   }
   &__nav {
     position: relative;
-    padding: 25px 15px;
+    padding: 25px 0px;
     border-bottom: 1px solid #8f8f8f;
     &::before {
       content: '';
@@ -260,6 +260,7 @@ const heroItems = [
       font-size: 20px;
     }
   }
+
   &__link {
     padding: 17px 55px;
     color: #fff;
@@ -288,10 +289,7 @@ const heroItems = [
     right: 0;
     bottom: 0;
     width: auto;
-    height: 550px;
-    @media screen and (max-width: 1756px) {
-      height: 450px;
-    }
+    height: 500px;
     @media screen and (max-width: 1349px) {
       height: 350px;
     }
@@ -301,6 +299,20 @@ const heroItems = [
     @media screen and (max-width: 636px) {
       height: 320px;
       z-index: -1;
+    }
+  }
+  &__cart-wrapper {
+    position: absolute;
+    right: 150px;
+    bottom: 10px;
+    z-index: 9999;
+  }
+  &__img-cart {
+    width: 55px;
+    height: 55px;
+    @media screen and (max-width: 636px) {
+      width: 40px;
+      height: 40px;
     }
   }
   &__link-wrapper {

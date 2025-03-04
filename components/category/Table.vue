@@ -136,6 +136,11 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
       width: 100%;
     }
   }
+  .table__row {
+    cursor: pointer;
+    position: relative;
+    transition: box-shadow 0.2s ease, border 0.2s ease;
+  }
   &__row {
     cursor: pointer;
     position: relative;
@@ -206,8 +211,6 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
 
   &-danger {
     color: #f41515;
-  }
-  &__body-text-availability {
   }
 }
 .available {

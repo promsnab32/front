@@ -6,7 +6,7 @@ export const useFormSender = () => {
   const cartStore = useCartStore()
   const sendToTelegram = async (formData: Record<string, string | number | null>, file?: File) => {
     const botToken = '8072338968:AAFZ1pHgsoe3UMPjgpuQT3Dvx2na5olBlwA'
-    const chatId = '1238935553'
+    const chatId = '554855169'
 
     let message = `📝 Promsnab/форма заявки:\n\n`
     message += `👤 Имя: ${formData.name}\n`

@@ -201,7 +201,7 @@ const cartCount = computed(() => cartStore.cartList.length)
   &__link-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1px;
   }
   &__link-item {
     display: flex;
@@ -226,13 +226,16 @@ const cartCount = computed(() => cartStore.cartList.length)
   &__link {
     color: #222;
     font-family: 'Manrope';
-    font-size: 18px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     transition: color 0.3s ease-in-out;
     &:hover {
       color: #204d80;
+    }
+    @media screen and (max-width: 1390px) {
+      font-size: 20px;
     }
     @media screen and (max-width: 688px) {
       font-size: 12px;

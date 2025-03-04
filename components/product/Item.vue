@@ -179,7 +179,7 @@ defineProps<{ product: ProductDTO | null }>()
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 10px 12px 10px;
+    padding: 30px 10px 32px 10px;
     border-radius: 12px;
     border: 1px solid #8f8f8f;
     @media screen and (max-width: 1200px) {
