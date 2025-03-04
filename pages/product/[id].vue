@@ -29,6 +29,68 @@ const getBradCrumbs = () => {
   ]
   return data
 }
+useHead({
+  title: product.value?.title,
+  link: [
+    {
+      rel: 'canonical',
+      href: `http://213.226.124.210${route.path}`,
+    },
+  ],
+  meta: [
+    {
+      hid: 'og:type',
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      hid: 'og:url',
+      property: 'og:url',
+      content: `http://213.226.124.210${route.path}`,
+    },
+    {
+      hid: 'description',
+      name: 'description',
+      content: product.value?.description,
+    },
+    {
+      hid: 'title',
+      name: 'title',
+      content: product.value?.title,
+    },
+    {
+      hid: 'og:title',
+      property: 'og:title',
+      content: product.value?.title,
+    },
+    {
+      hid: 'og:description',
+      property: 'og:description',
+      content: product.value?.description,
+    },
+    {
+      hid: 'robots',
+      name: 'robots',
+      content: 'index, follow',
+    },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: product.value?.title,
+        description: product.value?.description,
+        offers: {
+          '@type': 'Offer',
+          priceCurrency: 'RUB',
+          availability: product.value?.availability,
+        },
+      }),
+    },
+  ],
+})
 </script>
 
 <template>

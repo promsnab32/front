@@ -3,8 +3,59 @@ import Aura from '@primeuix/themes/Aura';
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  site: {
+    url: 'http://213.226.124.210/',
+  },
+  sitemap: {
+		urls: async (): Promise<any> => {
+			const arr: any = []
+      const response = await Promise.all([
+        fetch(
+          'http://213.226.124.210:1337/api/catalogs'
+        ),
+        fetch(
+          'http://213.226.124.210:1337/api/categories'
+        )
+      ])
+			const catalogs: any = await response[0].json()
+      const categories = await response[1].json()
+			catalogs.data.forEach((el: any) => {
+				arr.push(`/category/${el.documentId}`)
+			})
+      categories.data.forEach((el: any) => {
+				arr.push(`/products/${el.documentId}`)
+			})
+
+			return arr
+		},
+		sources: ['http://213.226.124.210/'],
+	},
   app: {
-    keepalive: true
+    rootId: 'prom_snab',
+    keepalive: true,
+    head: {
+      "meta": [
+        {
+          "name": "description",
+          "content": "запчасти для железнодорожного промышленного транспорта"
+        },
+        {
+          "name": "title",
+          "content": "Запчасти для железнодорожного промышленного транспорта"
+        },
+        {
+          "name": "keywords",
+          "content": "запчасти, поезды, магазин"
+        },
+        {
+          "name": "viewport",
+          "content": "width=device-width, initial-scale=1"
+        },
+        {
+          "charset": "utf-8"
+        }
+      ],
+    }
    },
   css: ['~/assets/scss/main.scss','swiper/swiper-bundle.css'],
   modules: ['@pinia/nuxt', 'vue-yandex-maps/nuxt', '@vee-validate/nuxt', 'nuxt-swiper', '@primevue/nuxt-module', [
@@ -25,8 +76,7 @@ export default defineNuxtConfig({
         requireTLS: true,
       },
     },
-  ],
-],
+  ], '@nuxtjs/sitemap'],
   yandexMaps: {
     apikey: '31d1f52d-d373-4258-a82e-5731c2ec14e4',
   },
@@ -42,8 +92,9 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    apiKey: process.env.NUXT_PRIVATE_KEY_FOR_STRAPI,
     public: {
-      baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'http://213.226.124.210:1337/api',
+      baseURL: process.env.NUXT_PUBLIC_BASE_URL,
     },
   }
 })
