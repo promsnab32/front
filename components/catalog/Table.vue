@@ -103,6 +103,14 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
 </template>
 
 <style lang="scss" scoped>
+.table__row {
+  transition: transform 0.3s ease-in-out;
+}
+.table__row:hover {
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  transform: scale(1.01);
+}
 .table {
   width: 100%;
   margin-bottom: 50px;
