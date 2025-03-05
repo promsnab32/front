@@ -107,13 +107,15 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
   transition: transform 0.3s ease-in-out;
 }
 .table__row:hover {
-  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 2px 2px rgba(96, 95, 95, 0.5);
   border-radius: 8px;
   transform: scale(1.01);
 }
 .table {
   width: 100%;
   margin-bottom: 50px;
+  border-spacing: 0 10px;
+  border-collapse: separate;
   @media screen and (max-width: 1286px) {
     margin-bottom: 10px;
   }
@@ -174,6 +176,9 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
       display: none;
     }
   }
+  &__row:hover::after {
+    display: none;
+  }
   &__head-value {
     margin-bottom: 20px;
     @media screen and (max-width: 1286px) {
@@ -197,7 +202,7 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     line-height: 21px;
     display: block;
     text-align: start;
-    padding: 20px 60px 20px 20px;
+    padding: 20px 60px 10px 20px;
   }
 
   &__body-text {
@@ -212,7 +217,7 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     display: block;
     &-article {
       color: #8f8f8f;
-      width: 250px;
+      width: 290px;
     }
     @media screen and (max-width: 1286px) {
       padding: 0;

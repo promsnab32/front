@@ -12,7 +12,10 @@
               v-if="item.type === 'link'"
               class="hero__nav-link"
               :to="item.link"
-              >{{ item.title }}</NuxtLink
+              ><span v-if="item.icon">
+                <img :src="item.icon" alt="icon" class="hero__nav-icon" />
+              </span>
+              {{ item.title }}</NuxtLink
             >
             <span v-else class="hero__dash"></span>
           </li>
@@ -84,7 +87,7 @@ const heroItems = [
   overflow: hidden;
   position: relative;
   background: url('/img/hero.png');
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -111,24 +114,27 @@ const heroItems = [
       content: '';
       position: absolute;
       top: 0;
-      left: -50%; /* Выход за пределы контейнера */
-      right: -50%; /* Выход за пределы контейнера */
+      left: -50%;
+      right: -50%;
       bottom: 0;
       background-image: url('/img/hero.png');
       background-size: cover;
-      filter: blur(1px);
+      filter: blur(6px);
       z-index: -1;
-      width: 200%; /* Увеличиваем ширину, чтобы псевдоэлемент выходил за пределы */
+      width: 200%;
     }
     @media screen and (max-width: 636px) {
       display: none;
     }
   }
   &__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #fff;
     text-align: center;
     font-family: 'Manrope';
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 800;
     text-transform: uppercase;
     text-decoration: none;
@@ -145,6 +151,9 @@ const heroItems = [
     width: 1px;
     height: 20px;
     background: #fff;
+    @media screen and (max-width: 1287px) {
+      height: 15px;
+    }
   }
   &__content {
     padding-top: 50px;
@@ -290,7 +299,10 @@ const heroItems = [
     bottom: 0;
     width: auto;
     height: 500px;
-    @media screen and (max-width: 1349px) {
+    @media screen and (max-width: 1642px) {
+      height: 450px;
+    }
+    @media screen and (max-width: 1642px) {
       height: 350px;
     }
     @media screen and (max-width: 1168px) {
@@ -306,6 +318,9 @@ const heroItems = [
     right: 150px;
     bottom: 10px;
     z-index: 9999;
+    @media screen and (max-width: 1032px) {
+      display: none;
+    }
   }
   &__img-cart {
     width: 55px;
@@ -319,6 +334,12 @@ const heroItems = [
     @media screen and (max-width: 636px) {
       display: flex;
       justify-content: center;
+    }
+  }
+  &__nav-icon {
+    @media screen and (max-width: 1287px) {
+      width: 15px;
+      height: 15px;
     }
   }
 }

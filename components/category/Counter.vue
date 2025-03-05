@@ -34,8 +34,9 @@ const removeInCart = () => {
 
 <template>
   <div class="counter">
-    <span class="counter__text counter__text-1">Колличество</span>
-    <span class="counter__text counter__text-2">{{ refCount }}</span>
+    <!-- <span class="counter__text counter__text-1">Колличество</span>
+    <span class="counter__text counter__text-2">{{ refCount }}</span> -->
+    <img src="/img/cart-header1.png" class="counter__img" alt="cart" />
     <CommonCountButton :when-click="removeInCart">-</CommonCountButton>
     <CommonCountButton :when-click="addToCart">+</CommonCountButton>
   </div>
@@ -49,9 +50,13 @@ const removeInCart = () => {
   gap: 10px;
   padding: 8px;
   width: max-content;
-  padding-right: 0;
+  padding-right: 20px;
   @media screen and (max-width: 1286px) {
     padding: 0px;
+  }
+  &__img {
+    width: 38px;
+    height: 38px;
   }
   &__text {
     color: #8f8f8f;
