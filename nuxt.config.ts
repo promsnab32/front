@@ -4,17 +4,17 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   site: {
-    url: 'http://213.226.124.210/',
+    url: 'http://localhost/',
   },
   sitemap: {
 		urls: async (): Promise<any> => {
 			const arr: any = []
       const response = await Promise.all([
         fetch(
-          'http://213.226.124.210:1337/api/catalogs'
+          'http://localhost:1337/api/catalogs'
         ),
         fetch(
-          'http://213.226.124.210:1337/api/categories'
+          'http://localhost:1337/api/categories'
         )
       ])
 			const catalogs: any = await response[0].json()
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 
 			return arr
 		},
-		sources: ['http://213.226.124.210/'],
+		sources: ['http://localhost/'],
 	},
   app: {
     rootId: 'prom_snab',
