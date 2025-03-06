@@ -1,20 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import Aura from '@primeuix/themes/Aura';
+import Aura from '@primeuix/themes/aura';
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   site: {
-    url: 'http://localhost/',
+    url: 'http://213.226.124.210/',
   },
   sitemap: {
 		urls: async (): Promise<any> => {
 			const arr: any = []
       const response = await Promise.all([
         fetch(
-          'http://localhost:1337/api/catalogs'
+          'http://213.226.124.210:1337/api/catalogs'
         ),
         fetch(
-          'http://localhost:1337/api/categories'
+          'http://213.226.124.210:1337/api/categories'
         )
       ])
 			const catalogs: any = await response[0].json()
@@ -28,7 +29,7 @@ export default defineNuxtConfig({
 
 			return arr
 		},
-		sources: ['http://localhost/'],
+		sources: ['http://213.226.124.210/'],
 	},
   app: {
     rootId: 'prom_snab',
