@@ -1,6 +1,9 @@
 <template>
   <section class="catalog">
     <HeaderNavigation class="catalog__navigation" />
+    <div class="catalog__search">
+      <HeaderSearch />
+    </div>
     <div class="container">
       <div class="catalog__wrapper-title">
         <h2 class="catalog__title">Каталог</h2>
@@ -44,6 +47,17 @@ defineProps<{
   }
   @media screen and (max-width: 636px) {
     padding: 0 0 20px 0;
+  }
+  &__search {
+    display: none;
+    @media screen and (max-width: 1326px) {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    @media screen and (max-width: 636px) {
+      background-color: #082246;
+    }
   }
   &__wrapper-title {
     margin-bottom: 31px;

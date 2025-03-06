@@ -41,6 +41,7 @@
                 :validation-schema="validationSchema"
                 id="form"
                 class="delivery__form"
+                @submit="handleSubmit"
               >
                 <Field
                   class="delivery__input"
@@ -80,10 +81,15 @@
                 />
                 <button class="delivery__btn">Оставить заявку</button>
               </Form>
-              <a href="#" target="_blank" class="delivery__policy"
+              <a href="/doc/policy.pdf" target="_blank" class="delivery__policy"
                 >Нажимая на кнопку вы даёте согласие на обработку персональных
                 данных в соответствии с Политикой конфиденциальности</a
               >
+              <p v-if="submitTrue" class="delivery__submiteTrue">
+                Спасибо, что выбрали нас! В течении 15 минут с Вами свяжется
+                менеджер по Вашей заявке.
+              </p>
+              <div v-if="loading" class="delivery__loading">Loading&#8230;</div>
             </div>
           </div>
         </div>
@@ -94,7 +100,8 @@
 
 <script lang="ts" setup>
 import { Form, Field, ErrorMessage } from 'vee-validate'
-
+const loading = ref(false)
+const submitTrue = ref(false)
 const formSubmitted = ref(false)
 const items = [
   {
@@ -111,12 +118,37 @@ const items = [
   },
 ]
 const validationSchema = useValidation(['name', 'phone', 'email'])
+const sendToForm = useFormSender()
+
+const buttonLoad = () => {
+  loading.value = true
+  setTimeout(() => {
+    loading.value = false
+    submitTrue.value = true
+  }, 2000)
+  setTimeout(() => {
+    submitTrue.value = false
+  }, 6000)
+}
+const handleSubmit = async (
+  values: any,
+  { resetForm }: { resetForm: () => void }
+) => {
+  try {
+    await sendToForm({ ...values })
+    buttonLoad()
+  } catch (error) {
+    console.error('Ошибка при отправке формы:', error)
+  } finally {
+    resetForm()
+  }
+}
 </script>
 
 <style scoped lang="scss">
 .delivery {
   position: relative;
-  padding: 47px 0;
+  padding: 77px 0;
   background: #356697;
   @media screen and (max-width: 900px) {
     padding: 27px 0;
@@ -201,6 +233,13 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
       color: #ffffff;
     }
   }
+  &__submiteTrue {
+    padding: 20px 0;
+    color: #488a46;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 21px;
+  }
   &__contact {
     position: absolute;
     top: 0;
@@ -244,7 +283,10 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
       max-width: 350px;
     }
     @media screen and (max-width: 410px) {
-      max-width: 300px;
+      max-width: 350px;
+    }
+    @media screen and (max-width: 370px) {
+      max-width: 320px;
     }
   }
   &__title-2 {
@@ -265,6 +307,7 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     padding: 19px 32px;
     margin-bottom: 15px;
     border-radius: 10px;
+    color: #8f8f8f;
     background: #fff;
     outline: none;
     &:last-child {
@@ -289,7 +332,7 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     position: relative;
     color: #8f8f8f;
     font-family: 'Manrope';
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: 15px;
@@ -332,6 +375,123 @@ const validationSchema = useValidation(['name', 'phone', 'email'])
     font-weight: 500;
     line-height: 21px;
     margin-bottom: 10px;
+  }
+  &__loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: visible;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    &:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &:not(:required) {
+      font: 0/0 a;
+      color: transparent;
+      text-shadow: none;
+      background-color: transparent;
+      border: 0;
+    }
+    &:not(:required):after {
+      content: '';
+      display: block;
+      font-size: 10px;
+      width: 1em;
+      height: 1em;
+      margin-top: -0.5em;
+      -webkit-animation: spinner 1500ms infinite linear;
+      -moz-animation: spinner 1500ms infinite linear;
+      -ms-animation: spinner 1500ms infinite linear;
+      -o-animation: spinner 1500ms infinite linear;
+      animation: spinner 1500ms infinite linear;
+      border-radius: 0.5em;
+      -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0,
+        rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+      box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0,
+        rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0,
+        rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    }
+
+    @-webkit-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-moz-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @-o-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
   }
 }
 </style>

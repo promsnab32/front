@@ -126,10 +126,16 @@ const whenChange = () => {
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
-
+    @media screen and (max-width: 562px) {
+      font-size: 12px;
+    }
     &-has {
       font-size: 14px;
-
+      min-width: 80px;
+      @media screen and (max-width: 562px) {
+        font-size: 12px;
+        min-width: 64px;
+      }
       &-success {
         color: #17ae0f;
       }
@@ -159,6 +165,10 @@ const whenChange = () => {
   outline: none;
   width: 73%;
   z-index: 3;
+  @media screen and (max-width: 668px) {
+    padding: 19px 0 19px 10px;
+    font-size: 12px;
+  }
 }
 
 .header__search-btn {
@@ -183,6 +193,19 @@ const whenChange = () => {
 
   &:focus {
     outline: none;
+  }
+  @media screen and (max-width: 668px) {
+    z-index: 1;
+  }
+  @media screen and (max-width: 668px) {
+    padding: 10px 71px;
+    font-size: 12px;
+  }
+  @media screen and (max-width: 476px) {
+    padding: 10px 51px;
+  }
+  @media screen and (max-width: 402px) {
+    padding: 10px 41px;
   }
 }
 </style>

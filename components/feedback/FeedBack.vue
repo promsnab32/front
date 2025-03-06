@@ -82,7 +82,7 @@
             Отправить
           </button>
         </Form>
-        <a href="#" class="feedback__policy" target="_blank">
+        <a href="/doc/policy.pdf" class="feedback__policy" target="_blank">
           Нажимая на кнопку вы даёте согласие на обработку персональных данных в
           соответствии с Политикой конфиденциальности
         </a>
@@ -402,7 +402,6 @@ const handleSubmit = async (
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.3);
     }
     &:not(:required) {
       font: 0/0 a;

@@ -71,7 +71,7 @@ export default defineNuxtConfig({
         secure: true,
         auth: {
           user: 'd.kireenkov32rus@yandex.ru',
-          pass: 'xxgwkqvknizrpqim',
+          pass: 'gauvwhsdshsebddv',
         },
         requireTLS: true,
       },

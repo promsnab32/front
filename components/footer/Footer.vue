@@ -22,7 +22,10 @@
         </div>
         <div class="footer__content">
           <div class="footer__policy">
-            <a class="footer__policy-link" href="/" target="_blank"
+            <a
+              class="footer__policy-link"
+              href="/doc/policy.pdf"
+              target="_blank"
               >Политика конфидициеальности</a
             >
           </div>
