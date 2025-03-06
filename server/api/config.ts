@@ -3,4 +3,4 @@ export default defineEventHandler(() => {
 	return {
 			apiKey: config.apiKey,
 	}
-}) 
+})
