@@ -79,7 +79,7 @@ export default defineNuxtConfig({
     },
   ], '@nuxtjs/sitemap'],
   yandexMaps: {
-    apikey: '31d1f52d-d373-4258-a82e-5731c2ec14e4',
+    apikey: 'aee34eca-cd73-4e0a-9963-3914d9a446c6',
   },
   primevue: {
     components: {
