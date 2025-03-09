@@ -20,7 +20,7 @@ const whenChange = () => {
   timeoutId = setTimeout(async () => {
     try {
       const client = new MeiliSearch({
-        host: 'http://213.226.124.210:7700',
+        host: 'https://promms.ru/search',
         apiKey: 'lPB3PU0//jtcTU7R1umiaQ==',
       })
       const response = (await client
