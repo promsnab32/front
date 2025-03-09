@@ -9,9 +9,7 @@ import { ContactsMap } from '#components'
         <ContactsInfo />
       </div>
       <div class="contacts__wrapper-map">
-        <ClientOnly>
-          <ContactsMap />
-        </ClientOnly>
+        <ContactsMap />
       </div>
     </div>
     <h2 class="contacts__bottom-text">
