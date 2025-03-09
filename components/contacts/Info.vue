@@ -12,7 +12,7 @@ const qrCodes = [
   },
   {
     link: 'https://api.whatsapp.com/send?phone=79776404030',
-    img: 'whatsApp',
+    img: 'whatsapp',
     title: 'WhatsApp',
   },
 ]

@@ -23,7 +23,7 @@ const cartStore = useCartStore()
         </div>
       </div>
       <div class="cart__empty" v-if="!cartStore.cartList.length">
-        <h1 class="">В корзине пока пусто</h1>
+        <h1 class="cart__subtitle">В корзине пока пусто</h1>
       </div>
       <CartList v-else />
     </div>
@@ -59,6 +59,10 @@ const cartStore = useCartStore()
     align-items: center;
     justify-content: space-between;
     margin-bottom: 22px;
+    @media screen and (max-width: 1200px) {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &__info-subtitle {
@@ -72,7 +76,10 @@ const cartStore = useCartStore()
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
-
+    text-align: center;
+    // @media screen and (max-width: 526px) {
+    //   padding: 17px 25px 15px 25px;
+    // }
     &-btn {
       position: relative;
 
@@ -84,10 +91,37 @@ const cartStore = useCartStore()
         position: absolute;
         width: 34px;
         height: 34px;
-        top: 12px;
+        top: 50%;
         left: 13px;
+        transform: translateY(-50%);
         background-image: url('/svg/remove-cart.svg');
+        @media screen and (max-width: 526px) {
+          width: 30px;
+          height: 30px;
+        }
       }
+      // @media screen and (max-width: 526px) {
+      //   padding: 17px 18px 15px 46px;
+      // }
+    }
+    @media screen and (max-width: 1046px) {
+      font-size: 16px;
+    }
+    @media screen and (max-width: 526px) {
+      font-size: 14px;
+    }
+  }
+  &__subtitle {
+    color: #222;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 58px;
+    @media screen and (max-width: 500px) {
+      font-size: 20px;
+    }
+    @media screen and (max-width: 380px) {
+      font-size: 18px;
     }
   }
 }

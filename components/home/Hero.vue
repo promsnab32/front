@@ -99,7 +99,7 @@ const heroItems = [
     min-height: 70vh;
   }
   @media screen and (max-width: 636px) {
-    min-height: 65vh;
+    min-height: 71vh;
   }
   &__nav-list {
     display: flex;

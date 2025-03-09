@@ -40,6 +40,9 @@ defineProps<{
 
     &:hover {
       transform: scale(1.05);
+      @media screen and (max-width: 500px) {
+        transform: none;
+      }
     }
 
     .catalogItem {

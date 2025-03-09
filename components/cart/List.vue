@@ -21,9 +21,11 @@ const cartStore = useCartStore()
           <CommonCountButton :when-click="() => cartStore.updateCart(item, -1)"
             >-</CommonCountButton
           >
-          <span class="cart__item-title" style="width: 25px">{{
-            item.count
-          }}</span>
+          <span
+            class="cart__item-title"
+            style="width: 25px; text-align: center"
+            >{{ item.count }}</span
+          >
 
           <CommonCountButton :when-click="() => cartStore.updateCart(item, 1)"
             >+</CommonCountButton
@@ -51,10 +53,16 @@ const cartStore = useCartStore()
     align-items: center;
     gap: 37px;
     flex-shrink: 0;
+    @media screen and (max-width: 1046px) {
+      gap: 5px;
+    }
   }
 
   &__list {
     margin-bottom: 60px;
+    @media screen and (max-width: 1046px) {
+      margin-bottom: 20px;
+    }
   }
 
   &__btn-send-mail {
@@ -67,6 +75,12 @@ const cartStore = useCartStore()
     line-height: 21px;
     padding: 20px 150px;
     text-decoration: none;
+    @media screen and (max-width: 1046px) {
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      padding: 15px 50px;
+    }
   }
 
   &__item-title {
@@ -75,6 +89,13 @@ const cartStore = useCartStore()
     font-style: normal;
     font-weight: 700;
     line-height: 21px;
+    @media screen and (max-width: 1046px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
+    @media screen and (max-width: 1046px) {
+      font-size: 18px;
+    }
   }
 
   &__item {
@@ -94,6 +115,27 @@ const cartStore = useCartStore()
       bottom: 0;
       left: 0;
     }
+    @media screen and (max-width: 1200px) {
+      border-radius: 14px;
+      border: 1px solid #8f8f8f;
+      background: #f8f8f8;
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:not(:last-child)::after {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 1046px) {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    @media screen and (max-width: 480px) {
+      padding: 20px 23px;
+      padding-right: 23px;
+    }
   }
   &__head {
     padding: 21px 150px 24px 40px;
@@ -103,6 +145,12 @@ const cartStore = useCartStore()
     border-radius: 14px;
     border: 1px solid #8f8f8f;
     background: #f8f8f8;
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 20px;
+    }
+    @media screen and (max-width: 1046px) {
+      display: none;
+    }
   }
 
   &__head-text {
