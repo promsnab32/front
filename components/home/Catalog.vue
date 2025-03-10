@@ -50,7 +50,7 @@ defineProps<{
   }
   &__search {
     display: none;
-    @media screen and (max-width: 1326px) {
+    @media screen and (max-width: 1100px) {
       display: flex;
       justify-content: center;
       margin-bottom: 20px;

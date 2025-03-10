@@ -63,16 +63,16 @@ export default defineNuxtConfig({
     'nuxt-mail',
     {
       message: {
-        to: 'd.kireenkov@yandex.ru',
+        to: 'snab-favorit@yandex.ru',
       },
       smtp: {
-        service: 'yandex.ru',
-        host: 'smtp.yandex.ru',
+        service: 'timeweb.ru',
+        host: 'smtp.timeweb.ru',
         port: 465,
         secure: true,
         auth: {
-          user: 'd.kireenkov32rus@yandex.ru',
-          pass: 'gauvwhsdshsebddv',
+          user: 'zakaz@promms.ru',
+          pass: '900a75l1h3',
         },
         requireTLS: true,
       },

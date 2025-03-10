@@ -99,8 +99,11 @@ const cartCount = computed(() => cartStore.cartList.length)
     align-items: center;
     justify-content: space-between;
     @media screen and (max-width: 1326px) {
-      justify-content: center;
+      // justify-content: center;
       gap: 10px;
+    }
+    @media screen and (max-width: 1100px) {
+      justify-content: center;
     }
   }
   &__link-wrapper {
@@ -146,13 +149,13 @@ const cartCount = computed(() => cartStore.cartList.length)
     width: 1px;
     height: 180px;
     background-color: #8f8f8f;
-    @media screen and (max-width: 1326px) {
+    @media screen and (max-width: 1100px) {
       display: none;
     }
   }
   &__dash-3 {
     display: none;
-    @media screen and (max-width: 1326px) {
+    @media screen and (max-width: 1100px) {
       display: block;
       width: 1px;
       height: 180px;
@@ -207,7 +210,7 @@ const cartCount = computed(() => cartStore.cartList.length)
     z-index: 3;
   }
   &__search {
-    @media screen and (max-width: 1326px) {
+    @media screen and (max-width: 1100px) {
       display: none;
     }
   }
@@ -239,8 +242,11 @@ const cartCount = computed(() => cartStore.cartList.length)
       padding-top: 0px;
     }
     @media screen and (max-width: 1326px) {
-      padding-top: 38px;
+      padding-top: 0px;
       gap: 7px;
+    }
+    @media screen and (max-width: 1100px) {
+      padding-top: 38px;
     }
     @media screen and (max-width: 688px) {
       padding-top: 19px;
@@ -344,7 +350,10 @@ const cartCount = computed(() => cartStore.cartList.length)
     display: flex;
     padding-top: 24px;
     @media screen and (max-width: 1326px) {
-      padding-top: 55px;
+      padding-top: 12px;
+    }
+    @media screen and (max-width: 1100px) {
+      padding-top: 52px;
     }
     @media screen and (max-width: 688px) {
       padding-top: 24px;

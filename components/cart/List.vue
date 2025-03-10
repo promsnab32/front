@@ -14,9 +14,10 @@ const cartStore = useCartStore()
         :key="index"
         class="cart__item"
       >
-        <span class="cart__item-title">
+        <p class="cart__item-title">
+          <span class="cart__head-text-mobile">Наименование</span>
           {{ item.name }}
-        </span>
+        </p>
         <div class="cart__item-count">
           <CommonCountButton :when-click="() => cartStore.updateCart(item, -1)"
             >-</CommonCountButton
@@ -135,6 +136,19 @@ const cartStore = useCartStore()
     @media screen and (max-width: 480px) {
       padding: 20px 23px;
       padding-right: 23px;
+    }
+  }
+  &__head-text-mobile {
+    display: none;
+    @media screen and (max-width: 1046px) {
+      margin-bottom: 5px;
+      display: block;
+      color: #222;
+      font-family: Manrope;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 21px;
     }
   }
   &__head {

@@ -126,6 +126,9 @@ const whenChange = () => {
     font-style: normal;
     font-weight: 500;
     line-height: 21px;
+    @media screen and (max-width: 1364px) {
+      font-size: 14px;
+    }
     @media screen and (max-width: 562px) {
       font-size: 12px;
     }
@@ -149,8 +152,15 @@ const whenChange = () => {
 .header__search {
   position: relative;
   width: 100%;
+  max-width: 100%;
   max-width: 650px;
   z-index: 9999;
+  @media screen and (max-width: 1364px) {
+    max-width: 337px;
+  }
+  @media screen and (max-width: 1100px) {
+    max-width: 665px;
+  }
 }
 .header__search-input {
   border-radius: 7px;
@@ -165,6 +175,14 @@ const whenChange = () => {
   outline: none;
   width: 73%;
   z-index: 3;
+
+  @media screen and (max-width: 1364px) {
+    width: 60%;
+    font-size: 13px;
+  }
+  @media screen and (max-width: 1100px) {
+    width: 73%;
+  }
   @media screen and (max-width: 668px) {
     padding: 19px 0 19px 10px;
     font-size: 12px;
@@ -193,6 +211,13 @@ const whenChange = () => {
 
   &:focus {
     outline: none;
+  }
+  @media screen and (max-width: 1364px) {
+    font-size: 13px;
+    padding: 15px 51px;
+  }
+  @media screen and (max-width: 1100px) {
+    padding: 15px 76px;
   }
   @media screen and (max-width: 668px) {
     z-index: 1;

@@ -44,6 +44,11 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
         <th
           v-for="column in table.getHeaderGroups()[0].headers"
           :key="column.id"
+          :class="{
+            'hide-on-mobile':
+              column.column.columnDef.header === 'Наличие' ||
+              column.column.columnDef.header === 'Добавить',
+          }"
         >
           <span class="table__head-text">
             {{ column.column.columnDef.header }}
@@ -65,6 +70,15 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
             cell.getContext().column.id === 'counter' ? 'width: 250px' : ''
           "
         >
+          <span
+            class="table__mobile-header"
+            v-if="
+              cell.column.columnDef.header !== 'Наличие' &&
+              cell.column.columnDef.header !== 'Добавить'
+            "
+            >{{ cell.column.columnDef.header }}</span
+          >
+          <span></span>
           <span
             v-if="cell.getContext().column.id === 'availability'"
             class="table__body-text"
@@ -142,8 +156,20 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
       width: 100%;
     }
   }
+  .table__head th:nth-child(3),
+  .table__row td:nth-child(3) {
+    width: 100px;
+    @media screen and (max-width: 1286px) {
+      width: 100%;
+    }
+  }
   .table__row td {
     border-radius: 14px; /* Добавьте закругление для ячеек */
+  }
+  .hide-on-mobile {
+    @media screen and (max-width: 1286px) {
+      display: none;
+    }
   }
   &__row {
     cursor: pointer;
@@ -202,9 +228,14 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     line-height: 21px;
     display: block;
     text-align: start;
-    padding: 20px 60px 10px 20px;
+    padding: 20px 60px 20px 20px;
   }
-
+  &__mobile-header {
+    display: none;
+    @media screen and (max-width: 1286px) {
+      display: block;
+    }
+  }
   &__body-text {
     color: #222;
     font-family: Manrope;
@@ -232,6 +263,7 @@ const handleClickOnRow = (e: MouseEvent, id: string) => {
     }
   }
 }
+
 .text-value {
   font-family: Manrope;
   font-size: 24px;
