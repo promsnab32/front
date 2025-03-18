@@ -130,6 +130,20 @@ const handleFileUpload = (event: Event) => {
   fileName.value = file.value?.name || 'Файл'
 }
 
+/*************  ✨ Codeium Command ⭐  *************/
+/**
+ * Handles the form submission process.
+ *
+ * @param {Object} values - The form values submitted by the user.
+ * @param {Object} options - Options object containing utility functions.
+ * @param {Function} options.resetForm - Function to reset the form fields.
+ *
+ * The function sends form data to the server, manages loading and success states,
+ * and handles any errors during the submission process. It also resets form values
+ * and file uploads after submission.
+ */
+
+/******  a027a582-70f4-4fbf-8aa2-59d841a14944  *******/
 const handleSubmit = async (
   values: any,
   { resetForm }: { resetForm: () => void }

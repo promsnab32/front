@@ -314,6 +314,7 @@ const cartCount = computed(() => cartStore.cartList.length)
     font-weight: 600;
     line-height: normal;
     transition: color 0.3s ease-in-out;
+    text-decoration: none;
     &:hover {
       color: #204d80;
     }

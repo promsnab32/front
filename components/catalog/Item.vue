@@ -65,3 +65,8 @@ defineProps<{
   }
 }
 </style>
+<style>
+.swiper-wrapper {
+  display: grid !important;
+}
+</style>

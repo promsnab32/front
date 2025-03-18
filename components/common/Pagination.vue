@@ -18,6 +18,7 @@ const changeRows = (params: number) => {
 }
 const whenChangePage = (value: number) => {
   emit('page-change', value + 1)
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 defineProps<{
   totalPages: number
