@@ -1,6 +1,6 @@
 <template>
   <section class="hero">
-    <div class="container">
+    <div class="container hero__container">
       <nav class="hero__nav">
         <ul class="list-reset hero__nav-list">
           <li
@@ -44,13 +44,17 @@
       <div class="hero__link-wrapper">
         <NuxtLink to="/catalog" class="hero__link">Перейти в каталог</NuxtLink>
       </div>
-      <div class="hero__cart-wrapper">
-        <NuxtLink to="/cart" style="text-decoration: none; cursor: pointer">
-          <img class="hero__img-cart" src="/img/cart.png" alt="vk" />
-        </NuxtLink>
-      </div>
     </div>
-    <picture>
+    <div class="hero__cart-wrapper">
+      <NuxtLink
+        to="/cart"
+        style="text-decoration: none; cursor: pointer"
+        class="hero__cart"
+      >
+        <img class="hero__img-cart" src="/img/cart.png" alt="vk" />
+      </NuxtLink>
+    </div>
+    <picture class="hero__train-image-wrapper">
       <source srcset="/img/hero-mobile.png" media="(max-width: 1032px)" />
       <img src="/img/hero-2.png" alt="Train" class="hero__train-image" />
     </picture>
@@ -90,16 +94,19 @@ const heroItems = [
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
   z-index: 1;
-  @media screen and (max-width: 1287px) {
-    min-height: 105vh;
-  }
-  @media screen and (max-width: 786px) {
-    min-height: 70vh;
-  }
-  @media screen and (max-width: 636px) {
-    min-height: 71vh;
+
+  &__container {
+    min-height: 836px;
+    @media screen and (max-width: 1287px) {
+      min-height: 980px;
+    }
+    @media screen and (max-width: 786px) {
+      min-height: 100%;
+    }
+    @media screen and (max-width: 636px) {
+      min-height: 602px;
+    }
   }
   &__nav-list {
     display: flex;
@@ -169,7 +176,7 @@ const heroItems = [
     }
     @media screen and (max-width: 636px) {
       padding-top: 30px;
-      margin-bottom: 210px;
+      margin-bottom: 240px;
     }
   }
   &__content-2 {
@@ -271,7 +278,9 @@ const heroItems = [
   }
 
   &__link {
+    display: inline-block;
     padding: 17px 55px;
+    margin-bottom: 120px;
     color: #fff;
     font-family: 'Manrope';
     font-size: 20px;
@@ -287,6 +296,9 @@ const heroItems = [
       background-color: #fff;
       color: #fb6415;
     }
+    @media screen and (max-width: 876px) {
+      margin-bottom: 20px;
+    }
     @media screen and (max-width: 636px) {
       padding: 13px 30px;
       font-size: 16px;
@@ -296,7 +308,7 @@ const heroItems = [
   &__train-image {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: 0px;
     width: auto;
     height: 500px;
     @media screen and (max-width: 1642px) {
@@ -308,19 +320,33 @@ const heroItems = [
     @media screen and (max-width: 1168px) {
       height: 280px;
     }
+    @media screen and (max-width: 1032px) {
+      // bottom: -87px;
+    }
+    @media screen and (max-width: 786px) {
+      // bottom: -17px;
+    }
     @media screen and (max-width: 636px) {
       height: 320px;
       z-index: -1;
+      // bottom: -83px;
     }
   }
   &__cart-wrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1920px;
+    width: 100%;
+    padding: 0 50px;
+    @media screen and (max-width: 1032px) {
+      display: none;
+    }
+  }
+  &__cart {
     position: absolute;
     right: 150px;
     bottom: 10px;
     z-index: 9999;
-    @media screen and (max-width: 1032px) {
-      display: none;
-    }
   }
   &__img-cart {
     width: 55px;
@@ -341,6 +367,13 @@ const heroItems = [
       width: 15px;
       height: 15px;
     }
+  }
+  &__train-image-wrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1920px;
+    width: 100%;
+    padding: 0 50px;
   }
 }
 </style>
