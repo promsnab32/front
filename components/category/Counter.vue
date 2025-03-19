@@ -8,17 +8,17 @@ const props = defineProps<{
 }>()
 
 const refCount = ref(props.count || 0)
-const body = {
-  name: props.title,
-  count: refCount.value,
-  article: props.article,
-  id: props.id,
-}
 
 watch(props, (newValue) => {
   refCount.value = newValue.count
 })
 const addToCart = () => {
+  const body = {
+    name: props.title,
+    count: refCount.value,
+    article: props.article,
+    id: props.id,
+  }
   if (refCount.value === 0 || refCount.value === null) return
 
   refCount.value--
@@ -26,6 +26,12 @@ const addToCart = () => {
 }
 
 const removeInCart = () => {
+  const body = {
+    name: props.title,
+    count: refCount.value,
+    article: props.article,
+    id: props.id,
+  }
   if (refCount.value === props.count) return
   refCount.value++
   cartStore.updateCart(body, -1)
