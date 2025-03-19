@@ -11,7 +11,7 @@ const cartStore = useCartStore()
     <ul class="list-reset cart__list">
       <li
         v-for="(item, index) in cartStore.cartList"
-        :key="index"
+        :key="index + item.id"
         class="cart__item"
       >
         <p class="cart__item-title">
