@@ -307,24 +307,26 @@ const heroItems = [
   }
   &__train-image {
     position: absolute;
-    right: 0;
+    right: -291px;
     bottom: 0px;
     width: auto;
-    height: 500px;
-    @media screen and (max-width: 1642px) {
-      height: 450px;
-    }
-    @media screen and (max-width: 1642px) {
-      height: 350px;
-    }
+    height: 582px;
+    // @media screen and (max-width: 1642px) {
+    //   height: 450px;
+    // }
+    // @media screen and (max-width: 1642px) {
+    //   height: 350px;
+    // }
     @media screen and (max-width: 1168px) {
-      height: 280px;
+      // height: 280px;
     }
     @media screen and (max-width: 1032px) {
+      height: 524px;
+      right: 0px;
       // bottom: -87px;
     }
     @media screen and (max-width: 786px) {
-      // bottom: -17px;
+      height: 364px;
     }
     @media screen and (max-width: 636px) {
       height: 320px;
