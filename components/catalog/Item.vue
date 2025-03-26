@@ -12,7 +12,6 @@ defineProps<{
       :link="item.documentId"
       :title="item.title"
       :img="item.media ? item.media[0].url : '/img/no-image.png'"
-      :isBold="true"
     />
     <ul class="list-reset catalog__list">
       <li v-for="bottomItem in item.categories">
@@ -66,7 +65,7 @@ defineProps<{
 }
 </style>
 <style>
-.swiper-wrapper {
+/* .swiper-wrapper {
   display: grid !important;
-}
+} */
 </style>

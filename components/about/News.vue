@@ -129,4 +129,7 @@ const handleClickNext = () => {
     }
   }
 }
+.swiper-wrapper {
+  display: flex !important;
+}
 </style>

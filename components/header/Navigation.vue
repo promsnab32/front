@@ -93,11 +93,17 @@ const items = navList
     text-transform: uppercase;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+    word-spacing: 10px;
+
     &:hover {
       color: #fb6415;
     }
+
     @media screen and (max-width: 1287px) {
       font-size: 14px;
+    }
+    @media screen and (max-width: 637px) {
+      word-spacing: 2px;
     }
     @media screen and (max-width: 586px) {
       font-size: 10px;

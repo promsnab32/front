@@ -11,7 +11,7 @@ defineProps<{
   <div class="catalog__item">
     <NuxtLink :to="`category/${link}`" class="catalog__list-link">
       <img class="catalog__img" :src="img" alt="img" />
-      <h3 class="catalog__subtitle" :class="{ 'catalog__bold-title': isBold }">
+      <h3 class="catalog__subtitle">
         {{ title }}
       </h3>
     </NuxtLink>
@@ -51,14 +51,11 @@ defineProps<{
     font-family: 'Manrope';
     font-size: 20px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 20px;
     @media screen and (max-width: 786px) {
       font-size: 16px;
     }
-  }
-  &__bold-title {
-    font-weight: 600;
   }
 }
 </style>

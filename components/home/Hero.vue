@@ -143,9 +143,11 @@ const heroItems = [
     font-family: 'Manrope';
     font-size: 24px;
     font-weight: 800;
+    line-height: 33px;
     text-transform: uppercase;
     text-decoration: none;
     transition: color 0.3s ease;
+    word-spacing: 10px;
     &:hover {
       color: #fb6415;
     }
